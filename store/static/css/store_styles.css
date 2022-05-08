@@ -1,0 +1,58 @@
+body
+{
+    width: 100%;
+}
+
+.brand-navbar-container
+{
+    height: 4rem;
+    background-color: aquamarine;
+}
+
+.breadcrumbs-wrapper
+{
+    height: 2rem;
+    background-color: burlywood;
+}
+
+.product-information-wrapper
+{
+    min-height: 10rem;
+    background-color: beige;
+}
+
+p.information-placeholder-label
+{
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    font-size: large;
+}
+
+.product-specifications-wrapper
+{
+    min-height: 10rem;
+    background-color: coral;
+}
+
+p.specification-placeholder-label
+{
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    font-size: large;
+}
+
+.product-reviews-wrapper
+{
+    min-height: 10rem;
+    background-color: cyan;
+}
+
+p.specification-placeholder-label
+{
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    font-size: large;
+}
