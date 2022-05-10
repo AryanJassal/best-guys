@@ -3,21 +3,47 @@ body
     width: 100%;
 }
 
-.brand-navbar-container
+a
+{
+    color: inherit;
+}
+
+.brand-navbar-container, .navbar-container
 {
     height: 4rem;
-    padding: 0 20% 0 20%;
 }
 
-.navbar-container-wrapper
+.navbar-container-wrapper, .breadcrumbs-content
 {
-    width: 80%;
+    width: 50%;
+    max-width: 50rem;
 }
 
-.breadcrumbs-wrapper
+.product-menu-container
+{
+    height: 3rem;
+    background-color: #1966af;
+}
+
+.breadcrumbs-content
+{
+    background-color: white;
+    color: #b5b5b5;
+    height: 100%;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.breadcrumbs-link
+{
+    padding: 0 0.8rem;
+    color: #1966af;
+    text-decoration: none;
+}
+
+.breadcrumbs-container
 {
     height: 2rem;
-    background-color: burlywood;
 }
 
 .product-information-wrapper
@@ -77,5 +103,4 @@ p.specification-placeholder-label
 {
     font-size: 32px;
     cursor: pointer;
-
 }

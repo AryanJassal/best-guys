@@ -26,25 +26,27 @@
       {% endblock %}
     </div>
 
-    <div class="brand-navbar-container d-flex flex-row flex-nowrap py-2 justify-content-center">
+    <div class="brand-navbar-container">
       {% block brand_navbar %}
-        <div class="navbar-container-wrapper d-flex flex-row flex-nowrap justify-content-center align-items-center">
-          <img src="{% static 'images/the_good_guys.png' %}" alt="logo" class="navbar-logo-image">
-
-          <div class="search-wrapper d-inline-flex align-items-center ps-3">
-            <form class="search-form" action="#" method="GET">
-              <div class="search-bar-wrapper">
-                <input type="text" class="search-bar form-control" placeholder="Search">
-              </div>
-            </form>
-          </div>
+        <div class="navbar-container d-flex justify-content-center py-2">
+          <div class="navbar-container-wrapper d-flex flex-row flex-nowrap justify-content-center align-items-center">
+            <img src="{% static 'images/the_good_guys.png' %}" alt="logo" class="navbar-logo-image">
   
-          <div class="account-button d-inline-flex ps-3">
-            <i class="bi bi-person navbar-buttons"></i>        
-          </div>
-  
-          <div class="cart-button d-inline-flex ps-3">
-            <i class="bi bi-cart navbar-buttons"></i>
+            <div class="search-wrapper d-inline-flex align-items-center px-5 flex-fill">
+              <form class="search-form w-100" action="#" method="GET">
+                <div class="search-bar-wrapper">
+                  <input type="text" class="search-bar form-control" placeholder="Search">
+                </div>
+              </form>
+            </div>
+    
+            <div class="account-button d-inline-flex">
+              <i class="bi bi-person navbar-buttons"></i>        
+            </div>
+    
+            <div class="cart-button d-inline-flex ps-3">
+              <i class="bi bi-cart navbar-buttons"></i>
+            </div>
           </div>
         </div>
       {% endblock %}
@@ -55,8 +57,13 @@
       {% endblock %}
     </div>
 
-    <div class="breadcrumbs-wrapper">
+    <div class="breadcrumbs-container">
       {% block breadcrumbs %}
+        <div class="breadcrumbs-wrapper d-flex justify-content-center align-items-center mt-2">
+          <div class="breadcrumbs-content d-flex">
+            {% block breadcrumbs_text %}<a href="#" class="breadcrumbs-link">Development</a> / <a href="#" class="breadcrumbs-link">Testing</a> / <a href="#" class="breadcrumbs-link">Breadcrumbs</a>{% endblock %}
+          </div>
+        </div>
       {% endblock %}
     </div>
 
