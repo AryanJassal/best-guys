@@ -6,7 +6,12 @@ body
 .brand-navbar-container
 {
     height: 4rem;
-    background-color: aquamarine;
+    padding: 0 20% 0 20%;
+}
+
+.navbar-container-wrapper
+{
+    width: 80%;
 }
 
 .breadcrumbs-wrapper
@@ -55,4 +60,22 @@ p.specification-placeholder-label
     text-align: center;
     font-weight: 700;
     font-size: large;
+}
+
+.logo-wrapper
+{
+    max-height: 100%;
+}
+
+.navbar-logo-image
+{
+    max-width: 100%;
+    height: 100%;
+}
+
+.navbar-buttons
+{
+    font-size: 32px;
+    cursor: pointer;
+
 }

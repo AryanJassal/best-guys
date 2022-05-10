@@ -26,8 +26,27 @@
       {% endblock %}
     </div>
 
-    <div class="brand-navbar-container">
+    <div class="brand-navbar-container d-flex flex-row flex-nowrap py-2 justify-content-center">
       {% block brand_navbar %}
+        <div class="navbar-container-wrapper d-flex flex-row flex-nowrap justify-content-center align-items-center">
+          <img src="{% static 'images/the_good_guys.png' %}" alt="logo" class="navbar-logo-image">
+
+          <div class="search-wrapper d-inline-flex align-items-center ps-3">
+            <form class="search-form" action="#" method="GET">
+              <div class="search-bar-wrapper">
+                <input type="text" class="search-bar form-control" placeholder="Search">
+              </div>
+            </form>
+          </div>
+  
+          <div class="account-button d-inline-flex ps-3">
+            <i class="bi bi-person navbar-buttons"></i>        
+          </div>
+  
+          <div class="cart-button d-inline-flex ps-3">
+            <i class="bi bi-cart navbar-buttons"></i>
+          </div>
+        </div>
       {% endblock %}
     </div> 
 
