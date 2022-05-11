@@ -13,7 +13,7 @@ a
     height: 4rem;
 }
 
-.navbar-container-wrapper, .breadcrumbs-content
+.navbar-container-wrapper, .breadcrumbs-content, .product-menu-content
 {
     width: 50%;
     max-width: 50rem;
@@ -103,4 +103,29 @@ p.specification-placeholder-label
 {
     font-size: 32px;
     cursor: pointer;
+}
+
+.navbar-menu-item
+{
+    color: white;
+    background-color: inherit;
+}
+
+.menu-item-wrapper
+{
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.menu-item-wrapper:hover
+{
+    background-color: #185792be;
+}
+
+.all-products-menu
+{
+    width: fit-content;
+    font-weight: 600;
+
+    transition: background-color 150ms;
 }
