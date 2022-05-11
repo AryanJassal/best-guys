@@ -39,6 +39,12 @@ a
     padding: 0 0.8rem;
     color: #1966af;
     text-decoration: none;
+    transition: color 150ms;
+}
+
+.breadcrumbs-link:hover
+{
+    color: #17436c;
 }
 
 .breadcrumbs-container

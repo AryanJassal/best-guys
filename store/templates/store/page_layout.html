@@ -3,7 +3,7 @@
 
 <html lang="en">
   <head>
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block full_title %}{% block title %}{% endblock %}{% block title_suffix %} | The Best Guys{% endblock %}{% endblock %}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -40,11 +40,11 @@
               </form>
             </div>
     
-            <div class="account-button d-inline-flex">
+            <div class="account-button d-flex me-3">
               <i class="bi bi-person navbar-buttons"></i>        
             </div>
     
-            <div class="cart-button d-inline-flex ps-3">
+            <div class="cart-button d-flex ms-3">
               <i class="bi bi-cart navbar-buttons"></i>
             </div>
           </div>
