@@ -3,7 +3,7 @@
 
 <html lang="en">
   <head>
-    <title>{% block full_title %}{% block title %}{% endblock %}{% block title_suffix %} | The Best Guys{% endblock %}{% endblock %}</title>
+    <title>{% block full_title %}{% block title %}{% endblock %}{% block title_suffix %} at The Best Guys{% endblock %}{% endblock %}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -58,7 +58,7 @@
       {% block product_menu %}
       <div class="product-menu-wrapper d-flex justify-content-center align-items-center h-100">
         <div class="product-menu-content d-flex h-100">
-          <div class="all-products-menu menu-item-wrapper d-flex justify-content-center align-items-center pe-3 mx-1">
+          <div class="all-products-menu menu-item-wrapper d-flex justify-content-center align-items-center mx-1">
             <div class="navbar-menu-item">
               ALL PRODUCTS
             </div>
@@ -92,9 +92,11 @@
       {% endblock %}
     </div>
 
-    <div class="product-information-wrapper">
+    <div class="product-information-container">
       {% block product_information %}
-        <p class="information-placeholder-label">Product Information goes here</p>
+        <div class="product-information-wrapper">
+          <p class="information-placeholder-label">Product Information goes here</p>
+        </div>
       {% endblock %}
     </div>
 
