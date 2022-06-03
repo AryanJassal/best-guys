@@ -8,26 +8,25 @@
   {% endblock %}
 
   {% block product_information %}
-  <div class="product-content-wrapper d-flex justify-content-center align-items-center mt-1">
-    <div class="product-content d-flex justify-content-center align-items-center flex-column mt-2">
-      <div class="d-flex justify-content-center flex-column align-items-center">
+  <div class="product-information-wrapper">
+    <div class="product-information">
+      <div class="product-title-wrapper">
         <span class="product-title">{{ title_long }}</span>
         <span class="product-subtitle">{{ model_number }}</span>
       </div>
-      <div class="d-flex flex-row">
-        <div class="product-image-wrapper d-flex align-items-center justify-content-center flex-grow-0 my-5">
+
+      <div class="product-details">
+        <div class="product-image-wrapper">
           <img src="{% static 'images/smart-tv.jpg' %}" alt="product image" class="product-image">
         </div>
 
-        <div class="product-price-wrapper flex-shrink-0 px-4 my-5">
-          <div class="price-wrapper w-100 mt-3">
-            <span class="price w-100">{% if sale_price %}<s>${{ price }}</s>{% else %}${{ price }}{% endif %}</span>
-          </div>
+        <div class="product-price-wrapper">
+          <div class="product-price">{% if sale_price %}<s>${{ price }}</s>{% else %}${{ price }}{% endif %}</div>
           {% if sale_price %}
-          <div class="sale-wrapper w-100 mt-1 d-flex justify-content-center align-items-center">
-            <div class="sale-contaier d-flex align-items-center">
-              <span class="badge bg-danger d-flex">SALE!</span>
-              <span class="new-price ms-2 d-flex">Now only for <b class="ps-1">${{ sale_price }}<b></span>
+          <div class="product-sale-wrapper">
+            <div class="product-sale-content">
+              <span class="d-flex badge bg-danger">SALE!</span>
+              <span class="sale-price">Now only for <b class="ps-1">${{ sale_price }}<b></span>
             </div>
           </div>
           {% endif %}
