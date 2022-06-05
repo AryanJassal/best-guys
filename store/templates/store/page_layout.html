@@ -159,106 +159,12 @@
         <div class="product-specifications">
           <span class="title">Technical Specifications</span>
           <div class="specifications">
-            <div>
-              <span class="title">Screen Technology: </span>
-              <span class="specification">Fourth Generation Quantum Dot Hyperspectral Panel</span>
-            </div>
-            <div>
-              <span class="title">Screen Size: </span>
-              <span class="specification">69"</span>
-            </div>
-            <div>
-              <span class="title">Screen Resolution: </span>
-              <span class="specification">15360 x 8640</span>
-            </div>
-            <div>
-              <span class="title">Colour Technology: </span>
-              <span class="specification">400% sRGB, 64-bit colour depth</span>
-            </div>
-            <div>
-              <span class="title">Hyperspectral: </span>
-              <span class="specification">Yes</span>
-            </div>
-            <div>
-              <span class="title">Simultaneous Hyperspectral Chanels: </span>
-              <span class="specification">2</span>
-            </div>
-            <div>
-              <span class="title">TV Processor: </span>
-              <span class="specification">Kolofon KF Zenith T27 CPU</span>
-            </div>
-            <div>
-              <span class="title">Smart TV: </span>
-              <span class="specification">Yes</span>
-            </div>
-            <div>
-              <span class="title">Smart TV Platform: </span>
-              <span class="specification">KF HyperOS 1.4</span>
-            </div>
-            <div>
-              <span class="title">Compatible Video Streaming Apps: </span>
-              <span class="specification">All</span>
-            </div>
-            <div>
-              <span class="title">Built-in Voice Assistant: </span>
-              <span class="specification">Google Assistant, Amazon Alexa, Hyper AI</span>
-            </div>
-            <div>
-              <span class="title">HDR Format: </span>
-              <span class="specification">Quantum HDR 16X Plus</span>
-            </div>
-            <div>
-              <span class="title">Sound: </span>
-              <span class="specification">InfiniImmersion Pro</span>
-            </div>
-            <div>
-              <span class="title">Refresh Rate: </span>
-              <span class="specification">Variable</span>
-            </div>
-            <div>
-              <span class="title">Maximum Refresh Rate: </span>
-              <span class="specification">690Hz</span>
-            </div>
-            <div>
-              <span class="title">Motion Rate: </span>
-              <span class="specification">0.1μs</span>
-            </div>
-            <div>
-              <span class="title">HDMI Inputs: </span>
-              <span class="specification">5</span>
-            </div>
-            <div>
-              <span class="title">DisplayPort Inputs: </span>
-              <span class="specification">2</span>
-            </div>
-            <div>
-              <span class="title">USB Inputs: </span>
-              <span class="specification">6</span>
-            </div>
-            <div>
-              <span class="title">Energy Star Rating: </span>
-              <span class="specification">9.5 stars</span>
-            </div>
-            <div>
-              <span class="title">Release Year: </span>
-              <span class="specification">2022</span>
-            </div>
-            <div>
-              <span class="title">Series: </span>
-              <span class="specification">Hyperspectral Series (KFHSTV027)</span>
-            </div>
-            <div>
-              <span class="title">Weight with stand (weight without stand): </span>
-              <span class="specification">36kg (29kg)</span>
-            </div>
-            <div>
-              <span class="title">What's In The Box: </span>
-              <span class="specification">2x HyperWave Remote, 2x DisplayPort 2.0</span>
-            </div>
-            <div>
-              <span class="title">Manufacturer's Warranty*: </span>
-              <span class="specification">3 Years</span>
-            </div>
+            {% for label, spec in technical_specifications.items %}
+              <div>
+                <span class="title">{{ label }}</span>
+                <span class="specification">{{ spec }}</span>
+              </div>
+            {% endfor %}
           </div>
           <div class="subtext">
             <span>* <a href="#">Terms and conditions apply.<a></span>
@@ -269,7 +175,12 @@
 
     <div class="product-reviews-wrapper">
       {% block product_reviews %}
-        <p class="specification-placeholder-label">Product Reviews goes here</p>
+        <div class="product-reviews">
+          <span class="title">Reviews</span>
+          <div class="reviews">
+            
+          </div>
+        </div>
       {% endblock %}
     </div>
   </body>
