@@ -3,7 +3,7 @@
 
 <html lang="en">
   <head>
-    <title>{% block full_title %}{% block title %}{% endblock %}{% block title_suffix %} at The Best Guys{% endblock %}{% endblock %}</title>
+    <title>{% block full_title %}{% block title %}{{ title_short }}{% endblock %}{% block title_suffix %} at The Best Guys{% endblock %}{% endblock %}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -95,14 +95,175 @@
     <div class="product-information-container">
       {% block product_information %}
         <div class="product-information-wrapper">
-          <p class="information-placeholder-label">Product Information goes here</p>
+          <div class="product-information">
+            <div class="product-title-wrapper">
+              <span class="product-title">{{ title_long }}</span>
+              <span class="product-subtitle">{{ model_number }}</span>
+            </div>
+      
+            <div class="product-details">
+              <div class="product-image-wrapper">
+                <img src="{{ product_image }}" alt="product image" class="product-image">
+              </div>
+      
+              <div class="product-price-wrapper">
+                <div class="product-price">{% if sale_price %}<s>${{ price }}</s>{% else %}${{ price }}{% endif %}</div>
+                {% if sale_price %}
+                <div class="product-sale-wrapper">
+                  <div class="product-sale-content">
+                    <span class="d-flex badge bg-danger">SALE!</span>
+                    <span class="sale-price">Now only for <b class="ps-1">${{ sale_price }}<b></span>
+                  </div>
+                </div>
+                {% endif %}
+                <div class="w-100 mt-4">
+                  <a class="btn btn-primary w-100" href="#">BUY NOW</a>
+                </div>
+                <div class="w-100 mt-2">
+                  <a class="btn btn-secondary w-100" href="#">BUY ON AMAZON</a>
+                </div>
+                <div class="check-availability-wrapper">
+                  <a href="#" class="btn btn-success">
+                    <i class="fa-solid fa-boxes-stacked pe-2"></i>Check availability in store
+                  </a>
+                </div>
+      
+                <div class="ratings-wrapper">
+                  <span>
+                    Rating: 5 stars (42 reviews)
+                  </span>
+                  <div class="ratings">
+                    <i class="fa-solid fa-star ratings-star"></i>
+                    <i class="fa-solid fa-star ratings-star"></i>
+                    <i class="fa-solid fa-star ratings-star"></i>
+                    <i class="fa-solid fa-star ratings-star"></i>
+                    <i class="fa-solid fa-star ratings-star"></i>
+                  </div>
+                  <div class="add-review">
+                    <a href="#"><i class="fa-solid fa-pen me-2 mb-4"></i>Write a review</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+            <div class="description-wrapper mb-4">
+              {{ brief_description }}
+            </div>
+          </div>
         </div>
       {% endblock %}
     </div>
 
     <div class="product-specifications-wrapper">
       {% block product_specifications %}
-        <p class="specification-placeholder-label">Product Specification goes here</p>
+        <div class="product-specifications">
+          <span class="title">Technical Specifications</span>
+          <div class="specifications">
+            <div>
+              <span class="title">Screen Technology: </span>
+              <span class="specification">Fourth Generation Quantum Dot Hyperspectral Panel</span>
+            </div>
+            <div>
+              <span class="title">Screen Size: </span>
+              <span class="specification">69"</span>
+            </div>
+            <div>
+              <span class="title">Screen Resolution: </span>
+              <span class="specification">15360 x 8640</span>
+            </div>
+            <div>
+              <span class="title">Colour Technology: </span>
+              <span class="specification">400% sRGB, 64-bit colour depth</span>
+            </div>
+            <div>
+              <span class="title">Hyperspectral: </span>
+              <span class="specification">Yes</span>
+            </div>
+            <div>
+              <span class="title">Simultaneous Hyperspectral Chanels: </span>
+              <span class="specification">2</span>
+            </div>
+            <div>
+              <span class="title">TV Processor: </span>
+              <span class="specification">Kolofon KF Zenith T27 CPU</span>
+            </div>
+            <div>
+              <span class="title">Smart TV: </span>
+              <span class="specification">Yes</span>
+            </div>
+            <div>
+              <span class="title">Smart TV Platform: </span>
+              <span class="specification">KF HyperOS 1.4</span>
+            </div>
+            <div>
+              <span class="title">Compatible Video Streaming Apps: </span>
+              <span class="specification">All</span>
+            </div>
+            <div>
+              <span class="title">Built-in Voice Assistant: </span>
+              <span class="specification">Google Assistant, Amazon Alexa, Hyper AI</span>
+            </div>
+            <div>
+              <span class="title">HDR Format: </span>
+              <span class="specification">Quantum HDR 16X Plus</span>
+            </div>
+            <div>
+              <span class="title">Sound: </span>
+              <span class="specification">InfiniImmersion Pro</span>
+            </div>
+            <div>
+              <span class="title">Refresh Rate: </span>
+              <span class="specification">Variable</span>
+            </div>
+            <div>
+              <span class="title">Maximum Refresh Rate: </span>
+              <span class="specification">690Hz</span>
+            </div>
+            <div>
+              <span class="title">Motion Rate: </span>
+              <span class="specification">0.1μs</span>
+            </div>
+            <div>
+              <span class="title">HDMI Inputs: </span>
+              <span class="specification">5</span>
+            </div>
+            <div>
+              <span class="title">DisplayPort Inputs: </span>
+              <span class="specification">2</span>
+            </div>
+            <div>
+              <span class="title">USB Inputs: </span>
+              <span class="specification">6</span>
+            </div>
+            <div>
+              <span class="title">Energy Star Rating: </span>
+              <span class="specification">9.5 stars</span>
+            </div>
+            <div>
+              <span class="title">Release Year: </span>
+              <span class="specification">2022</span>
+            </div>
+            <div>
+              <span class="title">Series: </span>
+              <span class="specification">Hyperspectral Series (KFHSTV027)</span>
+            </div>
+            <div>
+              <span class="title">Weight with stand (weight without stand): </span>
+              <span class="specification">36kg (29kg)</span>
+            </div>
+            <div>
+              <span class="title">What's In The Box: </span>
+              <span class="specification">2x HyperWave Remote, 2x DisplayPort 2.0</span>
+            </div>
+            <div>
+              <span class="title">Manufacturer's Warranty*: </span>
+              <span class="specification">3 Years</span>
+            </div>
+          </div>
+          <div class="subtext">
+            <span>* <a href="#">Terms and conditions apply.<a></span>
+          </div>
+        </div>
       {% endblock %}
     </div>
 

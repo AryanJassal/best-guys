@@ -3,7 +3,7 @@ body
   width: 100%;
 }
 
-a
+a, a:hover
 {
   color: inherit;
 }
@@ -72,11 +72,7 @@ p.information-placeholder-label
   font-size: large;
 }
 
-.product-specifications-wrapper
-{
-  min-height: 10rem;
-  background-color: coral;
-}
+
 
 p.specification-placeholder-label
 {
@@ -138,57 +134,6 @@ p.specification-placeholder-label
 {
   width: fit-content;
   transition: background-color 150ms;
-}
-
-
-.btn-check-availability
-{
-  border-radius: 4px;
-  height: 2.4rem;
-  text-align: center;
-  background-color: rgb(56, 157, 56);
-  color: white;
-  transition: background-color 150ms ease-in-out;
-}
-
-.btn-check-availability:hover
-{
-  background-color: rgb(61, 142, 61);
-  color: white;
-}
-
-.ratings-star
-{
-  font-size: 24px;
-  color: rgb(227, 218, 85);
-  text-shadow: 0 0 2px black;
-}
-
-.ratings-text
-{
-  color: darkslategray;
-  font-size: 1.2rem;
-  margin-top: -2px;
-}
-
-.add-review a
-{
-  text-decoration: none;
-  transition: color 150ms ease-in-out;
-}
-
-.add-review a:hover
-{
-  color: rgb(119, 126, 126);
-}
-
-
-
-.description-wrapper
-{
-  width: 80%;
-  text-align: center;
-  font-weight: 500;
 }
 
 /****************************************************/
@@ -297,5 +242,156 @@ p.specification-placeholder-label
   display: flex;
   font-size: 1.1rem;
   font-weight: 600;
-  margin: -3px 0 0 1rem;
+  margin-left: 1rem;
+}
+
+.check-availability-wrapper
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.check-availability-wrapper .btn
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.ratings-wrapper
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.ratings-wrapper span
+{
+  display: flex;
+  justify-content: center;
+  margin-top: -2px;
+  font-size: 1.2rem;
+  color: darkslategray;
+}
+
+.ratings-wrapper .ratings
+{
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.ratings-star
+{
+  font-size: 24px;
+  color: rgb(227, 218, 85);
+  text-shadow: 0 0 1px darkslategray;
+}
+
+.ratings-wrapper .add-review
+{
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.add-review a
+{
+  text-decoration: none;
+  transition: color 150ms ease-in-out;
+}
+
+.add-review a:hover
+{
+  color: rgb(119, 126, 126);
+}
+
+.description-wrapper
+{
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-align: center;
+  width: 80%;
+}
+
+/*****************************************************/
+/*** Product specifications ***/
+/*****************************************************/
+
+.product-specifications-wrapper
+{
+  margin: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-specifications-wrapper .title
+{
+  font-weight: 700;
+  font-size: 1.6rem;
+  width: 100%;
+  text-align: left;
+}
+
+.product-specifications
+{
+  width: 60%;
+}
+
+.product-specifications .specifications
+{
+  margin: 1rem 0;
+  border: 1px solid #b5b5b5;
+  color: #1a1a1a;
+}
+
+.product-specifications .specifications div
+{
+  display: flex;
+  flex-grow: 0;
+}
+
+.product-specifications .specifications div span
+{
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+.product-specifications .specifications div .title
+{
+  padding-left: 0.8rem;
+  width: 30%;
+  border-right: 1px solid #b5b5b5;
+  font-weight: 600;
+  
+}
+
+.product-specifications .specifications div .specification
+{
+  padding-left: 0.8rem;
+  width: 70%;
+  font-weight: 400;
+}
+
+.product-specifications .specifications div:nth-child(even)
+{
+  background-color: #eaeaea;
+}
+
+.product-specifications .specifications div:nth-child(odd)
+{
+  background-color: #ffffff;
+}
+
+.product-specifications .subtext
+{
+  font-size: 0.8rem;
+  color: #696969;
 }
