@@ -8,6 +8,13 @@ a, a:hover
   color: inherit;
 }
 
+img.responsive
+{
+  max-width: 100%;
+  object-fit: contain;
+  height: 100%;
+}
+
 .brand-navbar-container, .navbar-container, .logo-container
 {
   height: 4rem;
@@ -58,12 +65,6 @@ a, a:hover
   height: 2rem;
 }
 
-.product-information-wrapper
-{
-  min-height: 10rem;
-  background-color: beige;
-}
-
 p.information-placeholder-label
 {
   width: 100%;
@@ -96,6 +97,7 @@ p.specification-placeholder-label
 .navbar-logo-image
 {
   max-width: 100%;
+  object-fit: contain;
   height: 100%;
 }
 
@@ -145,7 +147,6 @@ p.specification-placeholder-label
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 60%;
   margin-top: 1rem;
 }
 
@@ -162,36 +163,68 @@ p.specification-placeholder-label
 {
   font-size: 1.5rem;
   font-weight: 700;
+  text-align: center;
 }
 
 .product-title-wrapper .product-subtitle
 {
   font-size: 1.2rem;
   font-weight: 500;
+  text-align: center;
+}
+
+.product-information
+{
+  padding: 0 1.5rem;
 }
 
 .product-information .product-details
 {
   display: flex;
-  flex-direction: row;
 }
 
+@media screen and (min-width: 1200px)
+{
+  .product-information .product-details
+  {
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 1200px)
+{
+  .product-information .product-details
+  {
+    flex-direction: column;
+  }
+}
 .product-details .product-image-wrapper
 {
+  min-height: 0;
+  max-height: 500px;
+  /* height: 500px; */
+  margin: 2rem 0;
+
+}
+
+.product-details .product-image-wrapper .product-image-container
+{
   display: flex;
-  flex-grow: 0;
   align-items: center;
   justify-content: center;
   background-color: white;
   border-radius: 5px;
-  height: 500px;
+  height: auto;
+  max-height: 500px;
+  width: auto;
   padding: 3rem;
-  margin: 2rem 0;
 }
 
-.product-image-wrapper .product-image
+.product-image-container .product-image
 {
-  height: 100%;
+  max-height: 400px;
+  width: 100%;
+  height: auto;
 }
 
 .product-details .product-price-wrapper
@@ -199,9 +232,24 @@ p.specification-placeholder-label
   flex-shrink: 0;
   background-color: white;
   border-radius: 5px;
-  width: 23rem;
   padding: 0 1.5rem;
-  margin: 2rem 0 2rem 4rem;
+}
+
+@media screen and (min-width: 1200px)
+{
+  .product-details .product-price-wrapper
+  {
+    width: 23rem;
+    margin: 2rem 0 2rem 4rem;
+  }
+}
+
+@media screen and (max-width: 1200px)
+{
+  .product-details .product-price-wrapper
+  {
+    margin: 2rem 0;
+  }
 }
 
 .product-price-wrapper .product-price
@@ -306,17 +354,34 @@ p.specification-placeholder-label
 
 .description-wrapper
 {
+  margin-bottom: 2rem;
   font-size: 0.8rem;
   font-weight: 500;
   text-align: center;
-  width: 80%;
+  max-width: 90rem;
+}
+
+@media screen and (max-width: 900px)
+{
+  .description-wrapper
+  {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 900px)
+{
+  .description-wrapper
+  {
+    width: 70%;
+  }
 }
 
 /*****************************************************/
 /*** Product specifications ***/
 /*****************************************************/
 
-.product-specifications-wrapper, .product-reviews-wrapper
+.product-specifications-wrapper
 {
   margin: 3rem 0;
   display: flex;
@@ -324,17 +389,32 @@ p.specification-placeholder-label
   align-items: center;
 }
 
-.product-specifications-wrapper .title, .product-reviews-wrapper .title
+.product-specifications-wrapper .title
 {
   font-weight: 700;
   font-size: 1.6rem;
   width: 100%;
   text-align: left;
+  padding: 1rem;
 }
 
-.product-specifications, .product-reviews
+.product-specifications
 {
-  width: 60%;
+  max-width: 70rem;
+}
+
+@media screen and (min-width: 1100px) {
+  .product-specifications
+  {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .product-specifications
+  {
+    width: 95%;
+  }
 }
 
 .product-specifications .specifications
@@ -362,7 +442,6 @@ p.specification-placeholder-label
   width: 30%;
   border-right: 1px solid #b5b5b5;
   font-weight: 600;
-  
 }
 
 .product-specifications .specifications div .specification
@@ -370,6 +449,32 @@ p.specification-placeholder-label
   padding-left: 0.8rem;
   width: 70%;
   font-weight: 400;
+}
+
+@media screen and (min-width: 768px)
+{
+  .product-specifications .specifications div .title
+  {
+    width: 30%;
+  }
+
+  .product-specifications .specifications div .specification
+  {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 768px)
+{
+  .product-specifications .specifications div .title
+  {
+    width: 50%;
+  }
+
+  .product-specifications .specifications div .specification
+  {
+    width: 50%;
+  }
 }
 
 .product-specifications .specifications div:nth-child(even)
@@ -391,3 +496,107 @@ p.specification-placeholder-label
 /*****************************************************/
 /*** Product reviews ***/
 /*****************************************************/
+
+.product-reviews-wrapper
+{
+  margin: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-reviews .title
+{
+  font-weight: 700;
+  font-size: 1.6rem;
+  width: 100%;
+  text-align: left;
+}
+
+.product-reviews
+{
+  max-width: 70rem;
+}
+
+.review
+{
+  margin-top: 1.4rem;
+  min-height: 10rem;
+  background: #f3f3f3;
+  border: 1px solid #b5b5b5;
+  border-radius: 5px;
+  position: relative;
+}
+
+.reviews .review .header
+{ 
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem;
+  border-bottom: 1px solid #b5b5b5;
+}
+
+.review .header .profile-image-wrapper
+{
+  flex-grow: 0;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #b5b5b5;
+}
+
+.review .header .review-title-wrapper
+{
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-title
+{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.review .body
+{
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.review .user-feedback
+{
+  position: absolute;
+  bottom: 0;
+  padding: 0.5rem;
+}
+
+.review .user-feedback .fa
+{
+  font-size: 1.3rem;
+}
+
+.review .user-feedback span
+{
+  padding-left: 0.3rem;
+}
+
+.product-reviews .add-review
+{
+  margin: 2rem 0;
+}
+
+@media screen and (min-width: 1100px) {
+  .product-reviews
+  {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .product-reviews
+  {
+    width: 95%;
+  }
+}
