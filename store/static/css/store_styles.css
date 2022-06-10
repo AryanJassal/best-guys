@@ -15,9 +15,21 @@ img.responsive
   height: 100%;
 }
 
+.navbar-brand-links
+{
+  margin-left: auto !important;
+}
+
 .brand-navbar-container, .navbar-container, .logo-container
 {
   height: 4rem;
+}
+
+.navbar-container-phone
+{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .navbar-container-wrapper, .breadcrumbs-content, .product-menu-content
@@ -25,6 +37,8 @@ img.responsive
   width: 50%;
   max-width: 50rem;
 }
+
+/* .navbar-container-wrapper-phone */
 
 .product-menu-container
 {
@@ -283,6 +297,8 @@ p.specification-placeholder-label
   font-size: 1.1rem;
   font-weight: 600;
   margin-left: 1rem;
+  word-wrap: break-word;
+  hyphens: manual;
 }
 
 .check-availability-wrapper

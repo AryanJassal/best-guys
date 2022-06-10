@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 
 <html lang="en">
@@ -25,10 +26,10 @@
       {% block top_notifications %}
       {% endblock %}
     </div>
-
+    
     <div class="brand-navbar-container">
       {% block brand_navbar %}
-        <div class="navbar-container d-flex justify-content-center py-2">
+        <div class="navbar-container justify-content-center py-2 d-md-flex d-none">
           <div class="navbar-container-wrapper d-flex flex-row flex-nowrap justify-content-center align-items-center">
             <a href="{% url 'core:home' %}" class="logo-container py-2">
               <img src="{% static 'images/the_best_guys.png' %}" alt="logo" class="navbar-logo-image">
@@ -51,10 +52,36 @@
             </div>
           </div>
         </div>
+        <div class="navbar-container-phone d-md-none d-flex">
+          <div class="d-flex flex-direction-row justify-content-center w-100 px-4">
+            <div class="d-flex flex-row justify-content-between align-items-center w-100">
+              <a href="{% url 'core:home' %}" class="logo-container py-2">
+                <img src="{% static 'images/the_best_guys.png' %}" alt="logo" class="navbar-logo-image">
+              </a>
+              
+              <div class="navbar-brand-links d-flex flex-row justify-content-center align-items-center">
+                <div class="account-button d-flex me-3">
+                  <i class="bi bi-person navbar-buttons"></i>        
+                </div>
+        
+                <div class="cart-button d-flex ms-3">
+                  <i class="bi bi-cart navbar-buttons"></i>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <div class="d-flex align-items-center px-2 w-100 mt-3">
+            <form class="search-form w-100" action="#" method="GET">
+              <div class="search-bar-wrapper">
+                <input type="text" class="search-bar form-control p-2" placeholder="Search">
+              </div>
+            </form>
+          </div>
+        </div>
       {% endblock %}
-    </div> 
 
-    <div class="product-menu-container">
+    <div class="product-menu-container d-md-block d-none">
       {% block product_menu %}
       <div class="product-menu-wrapper d-flex justify-content-center align-items-center h-100">
         <div class="product-menu-content d-flex h-100">
@@ -80,7 +107,7 @@
       {% endblock %}
     </div>
 
-    <div class="breadcrumbs-container">
+    <div class="breadcrumbs-container d-md-block d-none">
       {% block breadcrumbs %}
         <div class="breadcrumbs-wrapper d-flex justify-content-center align-items-center mt-2">
           <div class="breadcrumbs-content d-flex">
@@ -109,12 +136,12 @@
               </div>
       
               <div class="product-price-wrapper">
-                <div class="product-price">{% if sale_price %}<s>${{ price }}</s>{% else %}${{ price }}{% endif %}</div>
+                <div class="product-price">{% if sale_price %}<s>${{ price|intcomma }}</s>{% else %}${{ price|intcomma }}{% endif %}</div>
                 {% if sale_price %}
                 <div class="product-sale-wrapper">
-                  <div class="product-sale-content">
-                    <span class="d-flex badge bg-danger">SALE!</span>
-                    <span class="sale-price">Now only for <b class="ps-1">${{ sale_price }}<b></span>
+                  <div class="product-sale-content d-flex flex-row">
+                    <span class="d-flex badge bg-danger my-md-0 my-2">SALE!</span>
+                    <span class="sale-price text-center"><b class="ps-1 d-inline">Now only for ${{ sale_price|intcomma }} ({{ discount_percent }}% off!)</b></span>
                   </div>
                 </div>
                 {% endif %}
