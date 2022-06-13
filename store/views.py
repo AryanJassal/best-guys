@@ -1,11 +1,13 @@
 from django.shortcuts import render
+from django.urls import reverse
 from django.templatetags.static import static
+from django.http import HttpResponse
 
 def hyperspectral_tv(request):
     price = 69420.69
     sale_price = 1440.99
     return render(request, 'store/page_layout.html', {
-        'title_short': 'Hyperspectral TV',
+        'title_short': 'Kolofon Hyperspectral TV',
         'title_long': 'Kolofon 69" Quantum Dot 16K Ultra HD Hyperspectral Smart TV',
         'model_number': 'KFHSTV027-69QD-UHD-AU09200A',
         'product_image': static('images/smart-tv.jpg'),
@@ -49,7 +51,15 @@ def hyperspectral_tv(request):
             'Additional Features: ': 'Fire Resistant (Class 0 Fire Rating), Water Resistant (IP69KX Rating)',
             'Manufacturer\'s Warranty *': '3 Years',
         },
+        'breadcrumbs': {
+            'Products': reverse('store:products', kwargs={'filter': 'all'}),
+            'Televisions': reverse('store:products', kwargs={'filter': 'televisions'}),
+            'Kolofon Hyperspectral TV': '',
+        }
     })
 
 def glass_s(request):
     return render(request, 'store/page_layout.html')
+
+def products(request, filter):
+    return HttpResponse('testing worked')

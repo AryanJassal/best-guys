@@ -1,0 +1,208 @@
+@import '../../../static/styles/_breakpoints.scss';
+@import '../../../static/styles/_mixins.scss';
+
+.product-information-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background-color: #ececec;
+  // background-color: #414868;
+  background-color: $background-light;
+  margin-top: 0.5rem;
+
+  .product-information  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+}
+
+.product-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .product-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  .product-subtitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+  }
+}
+
+.product-information {
+  padding: 0 1.5rem;
+
+  .product-details {
+    display: flex;
+
+    .product-price-wrapper {
+      flex-shrink: 0;
+      background-color: $background;
+      border-radius: 5px;
+      padding: 0 1.5rem;
+
+      .product-price {
+        font-size: 2rem;
+        font-weight: 600;
+        text-align: center;
+        width: 100%;
+        padding: 0.4rem 0 0 0;
+        margin-top: 1.5rem;
+      }
+
+      .product-sale-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        .product-sale-content {
+          display: flex;
+          align-items: center;
+
+          .sale-price {
+            display: flex;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-left: 1rem;
+            word-wrap: break-word;
+            hyphens: manual;
+          }
+        }
+      }
+    }
+
+    .product-image-wrapper {
+      min-height: 0;
+      max-height: 500px;
+      margin: 2rem 0;
+
+      .product-image-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $background;
+        border-radius: 5px;
+        height: auto;
+        max-height: 500px;
+        width: auto;
+        padding: 3rem;
+
+        .product-image {
+          max-height: 400px;
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $xl) {
+  .product-information .product-details {
+    flex-direction: row;
+
+    .product-price-wrapper {
+      width: 28rem;
+      margin: 2rem 0 2rem 4rem;
+    }
+  }
+}
+
+@media screen and (max-width: $xl) {
+  .product-information .product-details {
+    flex-direction: column;
+
+    .product-price-wrapper {
+      margin: 2rem 0;
+    }
+  }
+}
+
+.check-availability-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 2rem;
+
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.ratings-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2rem;
+
+  span {
+    display: flex;
+    justify-content: center;
+    margin-top: -2px;
+    font-size: 1.2rem;
+    color: darkslategray;
+    // color: $text-color-mute;
+  }
+
+  .ratings-stars {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+    font-size: 24px;
+    color: rgb(227, 218, 85);
+    text-shadow: 0 0 1px darkslategray;
+  }
+
+  .add-review {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+
+    a {
+      text-decoration: none;
+      transition: color 150ms ease-in-out;
+
+      &:hover {
+        color: rgb(119, 126, 126);
+      }
+    }
+  }
+}
+
+.description-wrapper {
+  margin-bottom: 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-align: center;
+  max-width: 90rem;
+}
+
+@media screen and (max-width: $lg) {
+  .description-wrapper {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: $lg) {
+  .description-wrapper {
+    width: 70%;
+  }
+}
+
+.multiline-clamped {
+  @include multiline-clamp(5)
+}

@@ -1,0 +1,93 @@
+@import '../../../static/styles/_breakpoints.scss';
+
+
+.product-specifications-wrapper {
+  margin: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .product-specifications {
+    max-width: 70rem;
+
+    & > .title {
+      font-weight: 700;
+      font-size: 1.6rem;
+      width: 100%;
+      text-align: left;
+      padding: 1rem;
+    }
+
+    .specifications {
+      margin: 1rem 0;
+      border: 1px solid $text-color-alt;
+
+      & div:nth-child(odd) {
+        background-color: $background-light;
+      }
+
+      & div:nth-child(even) {
+        background-color: $background;
+      }
+
+      div {
+        display: flex;
+        flex-grow: 0;
+
+        span {
+          padding: 0.5rem 1rem;
+          font-size: 0.85rem;
+        }
+
+        .title {
+          padding-left: 0.8rem;
+          width: 30%;
+          border-right: 1px solid $text-color-alt;
+          font-weight: 600;
+        }
+
+        .specification {
+          padding-left: 0.8rem;
+          width: 70%;
+          font-weight: 400;
+        }
+      }
+    }
+    .subtext {
+      font-size: 0.8rem;
+      color: #696969;
+    }
+  }
+}
+
+@media screen and (min-width: $lg) {
+  .product-specifications {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: $lg) {
+  .product-specifications {
+    width: 95%;
+  }
+}
+
+@media screen and (min-width: $md) {
+  .product-specifications .specifications div .title {
+    width: 30%;
+  }
+
+  .product-specifications .specifications div .specification {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: $md) {
+  .product-specifications .specifications div .title {
+    width: 50%;
+  }
+
+  .product-specifications .specifications div .specification {
+    width: 50%;
+  }
+}

@@ -1,3 +1,8 @@
+.cursor-pointer
+{
+  cursor: pointer !important;
+}
+
 body
 {
   width: 100%;
@@ -37,8 +42,6 @@ img.responsive
   width: 50%;
   max-width: 50rem;
 }
-
-/* .navbar-container-wrapper-phone */
 
 .product-menu-container
 {
@@ -146,252 +149,6 @@ p.specification-placeholder-label
 
 /****************************************************/
 
-.product-information-wrapper
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ececec;
-  margin-top: 0.5rem;
-}
-
-.product-information
-{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
-}
-
-.product-title-wrapper
-{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.product-title-wrapper .product-title
-{
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-align: center;
-}
-
-.product-title-wrapper .product-subtitle
-{
-  font-size: 1.2rem;
-  font-weight: 500;
-  text-align: center;
-}
-
-.product-information
-{
-  padding: 0 1.5rem;
-}
-
-.product-information .product-details
-{
-  display: flex;
-}
-
-@media screen and (min-width: 1200px)
-{
-  .product-information .product-details
-  {
-    flex-direction: row;
-  }
-}
-
-@media screen and (max-width: 1200px)
-{
-  .product-information .product-details
-  {
-    flex-direction: column;
-  }
-}
-.product-details .product-image-wrapper
-{
-  min-height: 0;
-  max-height: 500px;
-  /* height: 500px; */
-  margin: 2rem 0;
-
-}
-
-.product-details .product-image-wrapper .product-image-container
-{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  border-radius: 5px;
-  height: auto;
-  max-height: 500px;
-  width: auto;
-  padding: 3rem;
-}
-
-.product-image-container .product-image
-{
-  max-height: 400px;
-  width: 100%;
-  height: auto;
-}
-
-.product-details .product-price-wrapper
-{
-  flex-shrink: 0;
-  background-color: white;
-  border-radius: 5px;
-  padding: 0 1.5rem;
-}
-
-@media screen and (min-width: 1200px)
-{
-  .product-details .product-price-wrapper
-  {
-    width: 23rem;
-    margin: 2rem 0 2rem 4rem;
-  }
-}
-
-@media screen and (max-width: 1200px)
-{
-  .product-details .product-price-wrapper
-  {
-    margin: 2rem 0;
-  }
-}
-
-.product-price-wrapper .product-price
-{
-  font-size: 2rem;
-  font-weight: 600;
-  text-align: center;
-  width: 100%;
-  padding: 0.4rem 0;
-  margin-top: 1.5rem;
-}
-
-.product-price-wrapper .product-sale-wrapper
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-top: 0.5rem;
-}
-
-.product-sale-wrapper .product-sale-content
-{
-  display: flex;
-  align-items: center;
-}
-
-.product-sale-content .sale-price
-{
-  display: flex;
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-left: 1rem;
-  word-wrap: break-word;
-  hyphens: manual;
-}
-
-.check-availability-wrapper
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-top: 2rem;
-}
-
-.check-availability-wrapper .btn
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-}
-
-.ratings-wrapper
-{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-.ratings-wrapper span
-{
-  display: flex;
-  justify-content: center;
-  margin-top: -2px;
-  font-size: 1.2rem;
-  color: darkslategray;
-}
-
-.ratings-wrapper .ratings
-{
-  display: flex;
-  justify-content: center;
-  margin-top: 0.5rem;
-}
-
-.ratings-star
-{
-  font-size: 24px;
-  color: rgb(227, 218, 85);
-  text-shadow: 0 0 1px darkslategray;
-}
-
-.ratings-wrapper .add-review
-{
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-.add-review a
-{
-  text-decoration: none;
-  transition: color 150ms ease-in-out;
-}
-
-.add-review a:hover
-{
-  color: rgb(119, 126, 126);
-}
-
-.description-wrapper
-{
-  margin-bottom: 2rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-align: center;
-  max-width: 90rem;
-}
-
-@media screen and (max-width: 900px)
-{
-  .description-wrapper
-  {
-    width: 90%;
-  }
-}
-
-@media screen and (min-width: 900px)
-{
-  .description-wrapper
-  {
-    width: 70%;
-  }
-}
 
 /*****************************************************/
 /*** Product specifications ***/
@@ -555,6 +312,7 @@ p.specification-placeholder-label
 .review .header .profile-image-wrapper
 {
   flex-grow: 0;
+  flex-shrink: 0;
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
@@ -567,12 +325,43 @@ p.specification-placeholder-label
   padding-left: 1rem;
   display: flex;
   flex-direction: column;
+  min-width: 0;
+}
+
+.review .header .review-rating-wrapper
+{
+  display: flex;
+  max-width: 100%;
+}
+
+.review .header .review-rating-wrapper .review-rating
+{
+  font-size: 1.1rem;
+  color: rgb(227, 218, 85);
+  text-shadow: 0 0 1px darkslategray;
+  flex-shrink: 0;
+}
+
+.review .header .review-rating-wrapper .ratings-help
+{
+  color: rgb(75, 75, 75);
 }
 
 .review-title
 {
+  display: flex;
   font-size: 1.2rem;
   font-weight: 600;
+  min-width: 0;
+  max-width: fit-content;
+}
+
+.review-title *
+{
+  display: inline;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .review .body

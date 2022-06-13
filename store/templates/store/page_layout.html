@@ -1,266 +1,257 @@
+{% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
-<!DOCTYPE html>
 
-<html lang="en">
-  <head>
-    <title>{% block full_title %}{% block title %}{{ title_short }}{% endblock %}{% block title_suffix %} at The Best Guys{% endblock %}{% endblock %}</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+{% endblock %}
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
-    {# <link href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" rel="stylesheet"> #}
+{% block scripts %}
+  <script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
 
-    <link rel="stylesheet" href="{% static 'css/store_styles.css' %}">
-    {# <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}"/> #}
-
-    {# <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> #}
-    {# <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script> #}
-    {# <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script> #}
-    {# <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> #}
-  </head>
-  <body>
-    <div class="top-notifications-container">
-      {% block top_notifications %}
-      {% endblock %}
-    </div>
-    
-    <div class="brand-navbar-container">
-      {% block brand_navbar %}
-        <div class="navbar-container justify-content-center py-2 d-md-flex d-none">
-          <div class="navbar-container-wrapper d-flex flex-row flex-nowrap justify-content-center align-items-center">
-            <a href="{% url 'core:home' %}" class="logo-container py-2">
-              <img src="{% static 'images/the_best_guys.png' %}" alt="logo" class="navbar-logo-image">
-            </a>
-  
-            <div class="search-wrapper d-inline-flex align-items-center px-5 flex-fill">
-              <form class="search-form w-100" action="#" method="GET">
-                <div class="search-bar-wrapper">
-                  <input type="text" class="search-bar form-control" placeholder="Search">
-                </div>
-              </form>
-            </div>
-    
-            <div class="account-button d-flex me-3">
-              <i class="bi bi-person navbar-buttons"></i>        
-            </div>
-    
-            <div class="cart-button d-flex ms-3">
-              <i class="bi bi-cart navbar-buttons"></i>
-            </div>
-          </div>
-        </div>
-        <div class="navbar-container-phone d-md-none d-flex">
-          <div class="d-flex flex-direction-row justify-content-center w-100 px-4">
-            <div class="d-flex flex-row justify-content-between align-items-center w-100">
-              <a href="{% url 'core:home' %}" class="logo-container py-2">
-                <img src="{% static 'images/the_best_guys.png' %}" alt="logo" class="navbar-logo-image">
-              </a>
-              
-              <div class="navbar-brand-links d-flex flex-row justify-content-center align-items-center">
-                <div class="account-button d-flex me-3">
-                  <i class="bi bi-person navbar-buttons"></i>        
-                </div>
+{% block body %}
+  <div class="brand-navbar-container">
+    <div class="navbar-container-wrapper d-md-flex d-none">
+      <div class="navbar-container">
+        <a href="{% url 'core:home' %}" class="logo-container">
+          <img src="{% static 'images/the_best_guys.png' %}" alt="logo" class="navbar-logo-image">
+        </a>
         
-                <div class="cart-button d-flex ms-3">
-                  <i class="bi bi-cart navbar-buttons"></i>
-                </div>
-              </div>
-              
+        <div class="search-wrapper flex-fill">
+          <form class="search-form w-100" action="#" method="GET">
+            <div class="search-bar-wrapper">
+              <input type="text" class="search-bar form-control" placeholder="Search">
             </div>
-          </div>
-          <div class="d-flex align-items-center px-2 w-100 mt-3">
-            <form class="search-form w-100" action="#" method="GET">
-              <div class="search-bar-wrapper">
-                <input type="text" class="search-bar form-control p-2" placeholder="Search">
-              </div>
-            </form>
-          </div>
+          </form>
         </div>
-      {% endblock %}
-
-    <div class="product-menu-container d-md-block d-none">
-      {% block product_menu %}
-      <div class="product-menu-wrapper d-flex justify-content-center align-items-center h-100">
-        <div class="product-menu-content d-flex h-100">
-          <div class="all-products-menu menu-item-wrapper d-flex justify-content-center align-items-center mx-1">
-            <div class="navbar-menu-item">
-              ALL PRODUCTS
-            </div>
+        
+        <div class="nav-button me-3">
+          <i class="bi bi-person navbar-buttons"></i>        
+        </div>
+        
+        <div class="nav-button ms-3">
+          <i class="bi bi-cart navbar-buttons"></i>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-container-phone d-md-none d-flex">
+      <div class="nav-items-wrapper-phone">
+        <a href="{% url 'core:home' %}" class="logo-container py-2">
+          <img src="{% static 'images/the_best_guys.png' %}" alt="logo" class="navbar-logo-image">
+        </a>
+        <div class="navbar-buttons-wrapper">
+          <div class="nav-button me-3">
+            <i class="bi bi-person navbar-buttons"></i>        
           </div>
-
-          <div class="televisions-menu menu-item-wrapper d-flex justify-content-center align-items-center px-3 mx-1">
-            <div class="navbar-menu-item">
-              Televisions
-            </div>
-          </div>
-
-          <div class="accessories-menu menu-item-wrapper d-flex justify-content-center align-items-center px-3 mx-1">
-            <div class="navbar-menu-item">
-              Accessories
-            </div>
+          <div class="nav-button ms-3">
+            <i class="bi bi-cart navbar-buttons"></i>
           </div>
         </div>
       </div>
-      {% endblock %}
+      <div class="search-wrapper-phone">
+        <form class="search-form w-100" action="#" method="GET">
+          <div class="search-bar-wrapper">
+            <input type="text" class="search-bar form-control p-2" placeholder="Search">
+          </div>
+        </form>
+      </div>
     </div>
-
-    <div class="breadcrumbs-container d-md-block d-none">
-      {% block breadcrumbs %}
-        <div class="breadcrumbs-wrapper d-flex justify-content-center align-items-center mt-2">
-          <div class="breadcrumbs-content d-flex">
-            {% block breadcrumbs_text %}
-              <a href="#" class="breadcrumbs-link">Development</a> / <a href="https://downloadmoreram.com/" class="breadcrumbs-link">Testing</a> / <span href="#https://downloadmoreram.comhttps://downloadmoreram.com/" class="breadcrumbs-text">Breadcrumbs</a>
-                {% endblock %}
+  </div>
+  
+  <div class="product-menu-container d-md-flex d-none">
+    <div class="product-menu-wrapper d-flex h-100">
+      <div class="product-menu-content d-flex h-100">
+        <div>
+          <div>
+            ALL PRODUCTS
           </div>
         </div>
-      {% endblock %}
+        
+        <div>
+          <div>
+            Televisions
+          </div>
+        </div>
+        
+        <div>
+          <div>
+            Accessories
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="product-information-container">
-      {% block product_information %}
-        <div class="product-information-wrapper">
-          <div class="product-information">
-            <div class="product-title-wrapper">
-              <span class="product-title">{{ title_long }}</span>
-              <span class="product-subtitle">{{ model_number }}</span>
-            </div>
-      
-            <div class="product-details">
-              <div class="product-image-wrapper">
-                <div class="product-image-container">
-                  <img src="{{ product_image }}" alt="product image" class="product-image">
-                </div>
-              </div>
-      
-              <div class="product-price-wrapper">
-                <div class="product-price">{% if sale_price %}<s>${{ price|intcomma }}</s>{% else %}${{ price|intcomma }}{% endif %}</div>
-                {% if sale_price %}
-                <div class="product-sale-wrapper">
-                  <div class="product-sale-content d-flex flex-row">
-                    <span class="d-flex badge bg-danger my-md-0 my-2">SALE!</span>
-                    <span class="sale-price text-center"><b class="ps-1 d-inline">Now only for ${{ sale_price|intcomma }} ({{ discount_percent }}% off!)</b></span>
-                  </div>
-                </div>
-                {% endif %}
-                <div class="w-100 mt-4">
-                  <a class="btn btn-primary w-100" href="https://downloadmoreram.com/">BUY NOW</a>
-                </div>
-                <div class="w-100 mt-2">
-                  <a class="btn btn-secondary w-100" href="https://downloadmoreram.com/">BUY ON AMAZON</a>
-                </div>
-                <div class="check-availability-wrapper">
-                  <a href="https://downloadmoreram.com/" class="btn btn-success">
-                    <i class="fa-solid fa-boxes-stacked pe-2"></i>Check availability in store
-                  </a>
-                </div>
-      
-                <div class="ratings-wrapper">
-                  <span>
-                    Rating: 5 stars (42 reviews)
-                  </span>
-                  <div class="ratings">
-                    <i class="fa-solid fa-star ratings-star"></i>
-                    <i class="fa-solid fa-star ratings-star"></i>
-                    <i class="fa-solid fa-star ratings-star"></i>
-                    <i class="fa-solid fa-star ratings-star"></i>
-                    <i class="fa-solid fa-star ratings-star"></i>
-                  </div>
-                  <div class="add-review">
-                    <a href="https://youtu.be/mkdWR5DuhBA"><i class="fa-solid fa-pen me-2 mb-4"></i>Write a review</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-      
-            <div class="description-wrapper">
-              {{ brief_description }}
+  </div>
+  
+  <div class="breadcrumbs-container d-md-flex d-none">
+    <div class="breadcrumbs-wrapper">
+      <div class="breadcrumbs-content d-inline-flex">
+        {% for label, reverse_url in breadcrumbs.items %}
+          {% if not forloop.last %}
+            <a href="{{ reverse_url }}" class="breadcrumbs-link">{{ label }}</a> / 
+          {% else %}
+            <span href="{{ reverse_url }}" class="breadcrumbs-text">{{ label }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+  <div class="product-information-container">
+    <div class="product-information-wrapper">
+      <div class="product-information">
+        <div class="product-title-wrapper">
+          <span class="product-title">{{ title_long }}</span>
+          <span class="product-subtitle">{{ model_number }}</span>
+        </div>
+        
+        <div class="product-details">
+          <div class="product-image-wrapper">
+            <div class="product-image-container">
+              <img src="{{ product_image }}" alt="product image" class="product-image">
             </div>
           </div>
-        </div>
-      {% endblock %}
-    </div>
-
-    <div class="product-specifications-wrapper">
-      {% block product_specifications %}
-        <div class="product-specifications">
-          <span class="title">Technical Specifications</span>
-          <div class="specifications">
-            {% for label, spec in technical_specifications.items %}
-              <div>
-                <span class="title">{{ label }}</span>
-                <span class="specification">{{ spec }}</span>
-              </div>
-            {% endfor %}
-          </div>
-          <div class="subtext">
-            <span>* <a href="https://youtu.be/mkdWR5DuhBA">Terms and conditions apply.<a></span>
-          </div>
-        </div>
-      {% endblock %}
-    </div>
-
-    <div class="product-reviews-wrapper">
-      {% block product_reviews %}
-        <div class="product-reviews">
-          <span class="title">Reviews</span>
-
-          <div class="add-review">
-            <form action="#">
-              <textarea name="review" id="review" rows="7" class="form-control"></textarea>
-              <button class="btn btn-primary form-control mt-3" type="submit">Post!</button>
-                
-            </form>
-          </div>
-
-          <div class="reviews">
-
-            <div class="review">
-              <div class="header">
-                <div class="profile-image-wrapper">
-                  <img src="{% static 'images/blank-user-avatar.png' %}" alt="pfp" class="responsive">
-                </div>
-                <div class="review-title-wrapper">
-                  <span class="review-title">Poggers</span>
-                  <span class="review-user">by HornPub69 on 8 June, 2022</span>
+          
+          <div class="product-price-wrapper">
+            <div class="product-price">{% if sale_price %}<s>${{ price|intcomma }}</s>{% else %}${{ price|intcomma }}{% endif %}</div>
+            {% if sale_price %}
+              <div class="product-sale-wrapper">
+                <div class="product-sale-content d-flex flex-column">
+                  <span class="d-flex badge bg-danger mb-2">SALE!</span>
+                  <span class="sale-price text-center"><b class="mt-1 d-inline">Now only for ${{ sale_price|intcomma }} ({{ discount_percent }}% off!)</b></span>
                 </div>
               </div>
-              <div class="body">
-                <div>
-                  This is the best purchase so far! 100% would commend others too.
-                </div>
+            {% endif %}
+            <div class="w-100 mt-4">
+              <a class="btn btn-primary w-100" href="https://downloadmoreram.com/">BUY NOW</a>
+            </div>
+            <div class="w-100 mt-2">
+              <a class="btn btn-secondary w-100" href="https://downloadmoreram.com/">BUY ON AMAZON</a>
+            </div>
+            <div class="check-availability-wrapper">
+              <a href="https://downloadmoreram.com/" class="btn btn-success">
+                <i class="fa-solid fa-boxes-stacked pe-2"></i>Check availability in store
+              </a>
+            </div>
+            
+            <div class="ratings-wrapper">
+              <span>
+                Rating: 5 stars (42 reviews)
+              </span>
+              <div class="ratings-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
               </div>
-              <div class="user-feedback">
-                <i class="fa fa-thumbs-up"></i>
-                <span>This user recommends this product</span>
+              <div class="add-review">
+                <a href="https://youtu.be/mkdWR5DuhBA"><i class="fa-solid fa-pen me-2 mb-4"></i>Write a review</a>
               </div>
-            </div> 
-            <div class="review">
-              <div class="header">
-                <div class="profile-image-wrapper">
-                  <img src="{% static 'images/blank-user-avatar.png' %}" alt="pfp" class="responsive">
-                </div>
-                <div class="review-title-wrapper">
-                  <span class="review-title">A test</span>
-                  <span class="review-user">by HornPub69 on 8 June, 2022</span>
-                </div>
-              </div>
-              <div class="body">
-                <div>
-                  This is ta comment to test out some things about this commenting feature and how it handles long pieces of text. Note that almost everything that you see is mostly non-functional and is just a template on how things should look. Once the visuals have been decided, the rest of the functionality will be added. Also, a thing I noticed is that GitHub Copilot is basically just TabNine inline completions in a different package and way more unintrusive. Some more content can be added here to test out more of the features. This basically acts like a stress test of sorts for the commenting feature. And, it appears to be working like a charm!
-                </div>
-              </div>
-              <div class="user-feedback">
-                <i class="fa fa-thumbs-up"></i>
-                <span>This user recommends this product</span>
-              </div>
-            </div> 
-
+            </div>
           </div>
         </div>
-      {% endblock %}
+        
+        <div class="description-wrapper">
+          <div class="description multiline-clamped">
+            {{ brief_description }}
+          </div>
+          <a onclick="toggle_show_more($(this));" class="show-more cursor-pointer">Show more.</a>
+        </div>
+      </div>
     </div>
-  </body>
-</html>
+  </div>
+  
+  <div class="product-specifications-wrapper">
+    <div class="product-specifications">
+      <span class="title">Technical Specifications</span>
+      <div class="specifications">
+        {% for label, spec in technical_specifications.items %}
+          <div>
+            <span class="title">{{ label }}</span>
+            <span class="specification">{{ spec }}</span>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="subtext">
+        <span>* <a href="https://youtu.be/mkdWR5DuhBA">Terms and conditions apply.<a></span>
+      </div>
+    </div>
+  </div>
+    
+  <div class="product-reviews-wrapper">
+    <div class="product-reviews">
+      <span class="title">Reviews</span>
+      
+      <div class="add-review">
+        <form action="#">
+          <textarea name="review" id="review" rows="7" class="form-control"></textarea>
+          <button class="btn btn-primary form-control mt-3" type="submit">Post!</button>
+        </form>
+      </div>
+      
+      <div class="reviews">
+        <div class="review">
+          <div class="header">
+            <div class="profile-image-wrapper">
+              <img src="{% static 'images/blank-user-avatar.png' %}" alt="pfp" class="responsive">
+            </div>
+            <div class="review-title-wrapper">
+              <div class="review-rating-wrapper d-flex flex-row">
+                <div class="review-rating">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <span class="review-title ms-3">Poggers</span>
+              </div>
+              <span class="review-user">by HornPub69 on 8 June, 2022</span>
+            </div>
+          </div>
+          <div class="body">
+            <div>
+              This is the best purchase so far! 100% would commend others too.
+            </div>
+          </div>
+          <div class="user-feedback">
+            <i class="fa fa-thumbs-up"></i>
+            <span>This user recommends this product</span>
+          </div>
+        </div> 
+        <div class="review">
+          <div class="header">
+            <div class="profile-image-wrapper">
+              <img src="{% static 'images/blank-user-avatar.png' %}" alt="pfp" class="responsive">
+            </div>
+            <div class="review-title-wrapper">
+              <div class="review-rating-wrapper flex-column flex-md-row">
+                <div class="review-rating">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="review-title ms-md-3"><span>A test for long titles and to see what happens when the title should overflow on, say, smaller devices.</span></div>
+              </div>
+              <span class="review-user">by HornPub69 on 8 June, 2022</span>
+            </div>
+          </div>
+          <div class="body">
+            <div>
+              This is ta comment to test out some things about this commenting feature and how it handles long pieces of text. Note that almost everything that you see is mostly non-functional and is just a template on how things should look. Once the visuals have been decided, the rest of the functionality will be added. Also, a thing I noticed is that GitHub Copilot is basically just TabNine inline completions in a different package and way more unintrusive. Some more content can be added here to test out more of the features. This basically acts like a stress test of sorts for the commenting feature. And, it appears to be working like a charm!
+            </div>
+          </div>
+          <div class="user-feedback">
+            <i class="fa fa-thumbs-up"></i>
+            <span>This user recommends this product</span>
+          </div>
+        </div> 
+        
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+    
