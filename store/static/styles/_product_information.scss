@@ -5,8 +5,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  // background-color: #ececec;
-  // background-color: #414868;
   background-color: $background-light;
   margin-top: 0.5rem;
 
@@ -154,8 +152,7 @@
     justify-content: center;
     margin-top: -2px;
     font-size: 1.2rem;
-    color: darkslategray;
-    // color: $text-color-mute;
+    color: $text-color-mute;
   }
 
   .ratings-stars {
@@ -164,7 +161,7 @@
     margin-top: 0.5rem;
     font-size: 24px;
     color: rgb(227, 218, 85);
-    text-shadow: 0 0 1px darkslategray;
+    text-shadow: 0 0 1px $text-color-mute;
   }
 
   .add-review {
@@ -177,7 +174,7 @@
       transition: color 150ms ease-in-out;
 
       &:hover {
-        color: rgb(119, 126, 126);
+        color: $text-color-mute-hover;
       }
     }
   }

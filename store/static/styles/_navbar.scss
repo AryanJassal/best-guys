@@ -144,11 +144,11 @@
     transition: background-color 150ms;
     
     &:hover {
-      background-color: #185792be;
+      background-color: $background-alt;
     }
 
     div {
-      color: white;
+      color: $background;
       background-color: inherit;
       transition: inherit;
     }
@@ -167,24 +167,24 @@
 
     .breadcrumbs-content {
       display: inline-flex;
-      color: #b5b5b5;
+      color: $text-color-light;
       height: 100%;
       font-weight: 600;
       font-size: 15px;
     
       .breadcrumbs-link {
         padding: 0 0.8rem;
-        color: #1966af;
+        color: $text-color-alt;
         text-decoration: none;
         transition: color 150ms;
       
         &:hover {
-          color: #17436c;
+          color: $text-color-alt-hover;
         }
       }
       
       .breadcrumbs-text {
-        color: #696969;
+        color: $text-color-disabled;
         padding-left: 10px;
       }
     }

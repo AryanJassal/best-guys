@@ -20,7 +20,7 @@
 
     .specifications {
       margin: 1rem 0;
-      border: 1px solid $text-color-alt;
+      border: 1px solid $border-color;
 
       & div:nth-child(odd) {
         background-color: $background-light;
@@ -42,7 +42,7 @@
         .title {
           padding-left: 0.8rem;
           width: 30%;
-          border-right: 1px solid $text-color-alt;
+          border-right: 1px solid $border-color;
           font-weight: 600;
         }
 
@@ -55,7 +55,7 @@
     }
     .subtext {
       font-size: 0.8rem;
-      color: #696969;
+      color: $text-color-disabled;
     }
   }
 }

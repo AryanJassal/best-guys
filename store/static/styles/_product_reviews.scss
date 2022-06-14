@@ -23,8 +23,8 @@
     .review {
       margin-top: 1.4rem;
       min-height: 10rem;
-      background: #f3f3f3;
-      border: 1px solid #b5b5b5;
+      background: $background-lighter;
+      border: 1px solid $border-color;
       border-radius: 5px;
       position: relative;
 
@@ -32,7 +32,7 @@
         display: flex;
         flex-direction: row;
         padding: 0.5rem;
-        border-bottom: 1px solid #b5b5b5;
+        border-bottom: 1px solid $border-color;
 
         .profile-image-wrapper {
           flex-grow: 0;
@@ -41,7 +41,7 @@
           width: 3rem;
           border-radius: 50%;
           overflow: hidden;
-          border: 1px solid #b5b5b5;
+          border: 1px solid $border-color;
 
           img {
             max-width: 100%;
@@ -64,12 +64,12 @@
           .review-rating {
             font-size: 1.1rem;
             color: rgb(227, 218, 85);
-            text-shadow: 0 0 1px darkslategray;
+            text-shadow: 0 0 1px $text-color-mute;
             flex-shrink: 0;
           }
 
           .ratings-help {
-            color: rgb(75, 75, 75);
+            color: $text-color-mute;
           }
 
 
