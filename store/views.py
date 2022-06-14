@@ -10,7 +10,7 @@ def hyperspectral_tv(request):
         'title_short': 'Kolofon Hyperspectral TV',
         'title_long': 'Kolofon 69" Quantum Dot 16K Ultra HD Hyperspectral Smart TV',
         'model_number': 'KFHSTV027-69QD-UHD-AU09200A',
-        'product_image': static('images/smart-tv.jpg'),
+        'product_image': static('images/smart-tv.png'),
         'price': price,
         'sale_price': sale_price,
         'discount_percent': round(((price - sale_price) / price) * 100),
