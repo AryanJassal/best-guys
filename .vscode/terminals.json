@@ -1,0 +1,33 @@
+{
+  "autorun": true,
+  "autokill": true,
+  "terminals": [
+    {
+      "name": "Live Reload",
+      "description": "For django livereload",
+      "open": true,
+      "focus": true,
+      "commands": [
+        "python manage.py livereload"
+      ]
+    },
+    {
+      "name": "Server",
+      "description": "Django server",
+      "open": true,
+      "focus": false,
+      "commands": [
+        "python manage.py runserver 0.0.0.0:8000"
+      ]
+    },
+    {
+      "name": "Sass",
+      "description": "For watching and compiling sass files",
+      "open": true,
+      "focus": false,
+      "commands": [
+        "sass --watch --no-source-map static/styles/core.scss:static/styles/base_styles.css apps/store/static/styles/main.scss:apps/store/static/styles/styles.css"
+      ]
+    }
+  ]
+}

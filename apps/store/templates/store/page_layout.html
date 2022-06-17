@@ -2,6 +2,8 @@
 {% load static %}
 {% load humanize %}
 
+{% block title %}{{ product.name }}{% endblock %}
+
 {% block styles %}
   <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
 {% endblock %}
@@ -101,24 +103,24 @@
     <div class="product-information-wrapper">
       <div class="product-information">
         <div class="product-title-wrapper">
-          <span class="product-title">{{ title_long }}</span>
-          <span class="product-subtitle">{{ model_number }}</span>
+          <span class="product-title">{{ product.long_name }}</span>
+          <span class="product-subtitle">{{ product.model }}</span>
         </div>
         
         <div class="product-details">
           <div class="product-image-wrapper">
             <div class="product-image-container">
-              <img src="{{ product_image }}" alt="product image" class="product-image">
+              <img src="{{ product.image_url }}" alt="product image" class="product-image">
             </div>
           </div>
           
           <div class="product-price-wrapper">
-            <div class="product-price">{% if sale_price %}<s>${{ price|intcomma }}</s>{% else %}${{ price|intcomma }}{% endif %}</div>
-            {% if sale_price %}
+            <div class="product-price">{% if product.sale_price %}<s>${{ product.price|intcomma }}</s>{% else %}${{ product.price|intcomma }}{% endif %}</div>
+            {% if product.sale_price > 0.0 %}
               <div class="product-sale-wrapper">
                 <div class="product-sale-content d-flex flex-column">
                   <span class="d-flex badge bg-danger mb-2">SALE!</span>
-                  <span class="sale-price text-center"><b class="mt-1 d-inline">Now only for ${{ sale_price|intcomma }} ({{ discount_percent }}% off!)</b></span>
+                  <span class="sale-price text-center"><b class="mt-1 d-inline">Now only for ${{ product.sale_price|intcomma }} ({{ discount_percent }}% off!)</b></span>
                 </div>
               </div>
             {% endif %}
@@ -154,7 +156,7 @@
         
         <div class="description-wrapper">
           <div class="description multiline-clamped">
-            {{ brief_description }}
+            {{ product.description }}
           </div>
           <a onclick="toggle_show_more($(this));" class="show-more cursor-pointer">Show more.</a>
         </div>
@@ -166,10 +168,10 @@
     <div class="product-specifications">
       <span class="title">Technical Specifications</span>
       <div class="specifications">
-        {% for label, spec in technical_specifications.items %}
+        {% for spec in product.specifications.all %}
           <div>
-            <span class="title">{{ label }}</span>
-            <span class="specification">{{ spec }}</span>
+            <span class="title">{{ spec.label }}</span>
+            <span class="specification">{{ spec.specification }}</span>
           </div>
         {% endfor %}
       </div>
@@ -191,7 +193,40 @@
       </div>
       
       <div class="reviews">
-        <div class="review">
+        {% for review in product.reviews.all %}
+          <div class="review">
+            <div class="header">
+              <div class="profile-image-wrapper">
+                <img src="{% static 'images/blank-user-avatar.png' %}" alt="pfp">
+              </div>
+              <div class="review-title-wrapper">
+                <div class="review-rating-wrapper d-flex flex-row">
+                  <div class="review-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <span class="review-title ms-3">{{ review.title }}</span>
+                </div>
+                <span class="review-user">by {{ review.user.username }} on {{ review.created_at }}</span>
+              </div>
+            </div>
+            <div class="body">
+              <div>
+                {{ review.body }}                
+              </div>
+            </div>
+            <div class="user-feedback">
+              <i class="fa fa-thumbs-up"></i>
+              <span>This user recommends this product</span>
+            </div>
+          </div> 
+        {% empty %}
+          <h2>No reviews yet</h2>
+        {% endfor %}
+        {% comment %} <div class="review">
           <div class="header">
             <div class="profile-image-wrapper">
               <img src="{% static 'images/blank-user-avatar.png' %}" alt="pfp">
@@ -248,7 +283,7 @@
             <i class="fa fa-thumbs-up"></i>
             <span>This user recommends this product</span>
           </div>
-        </div> 
+        </div>  {% endcomment %}
         
       </div>
     </div>
