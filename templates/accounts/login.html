@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block full_title %}Log in to Kolofon Technologies{% endblock %}
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'accounts/styles/user_authentication_styles.css' %}">
+{% endblock %}
+
+{% block body %}
+  <div class="container mt-5">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-lg-7 col-sm-12 authentication-form-container">
+        <div class="col p-3 px-4">
+          <form action="{% url 'core:login' %}" method="POST" autocomplete="off">
+            {% csrf_token %}
+            
+            <h1 class="mb-4">Login</h1>
+            
+            {% if errors %}
+              {% for error in errors %}
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ error }}
+                <a class="btn-close" data-bs-dismiss="alert" style="outline: none; cursor:pointer;"><span></span></a>
+              </div>
+              {% endfor %}
+            {% endif %}
+            
+            {% for field in form %}
+              <div class="form-floating mb-3">
+                {{ field }}
+                <label class="form-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+              </div>
+            {% endfor %}
+            
+            <div class="form-group my-3">
+              <input type="submit" class="btn btn-primary form-control" value="Login">
+            </div>
+          </form>
+          
+          <p class="mb-1" style="font-family: 'Open Sans', sans-serif; font-size: 15px;">New here? <a href="{% url 'core:register' %}">Sign up.</a></p>
+          {# <p class="mb-1" style="font-family: 'Open Sans', sans-serif; font-size: 15px;"><a href="{% url 'password_reset' %}" class="text-info">Forgot your password?</a></p> #}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock body %}

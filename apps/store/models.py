@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.postgres.fields import JSONField
+from django.core.validators import MaxValueValidator, MinValueValidator 
 from apps.core.models import User
 
 
@@ -24,6 +24,7 @@ class Review(models.Model):
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     recommended = models.BooleanField(default=False)
+    star_rating = models.PositiveIntegerField(default=5, validators=[MinValueValidator(1), MaxValueValidator(5)])
 
     def __str__(self):
         return self.name

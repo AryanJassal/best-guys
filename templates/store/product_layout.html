@@ -1,0 +1,355 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+  <div class="brand-navbar-container">
+    <div class="navbar-container-wrapper d-md-flex d-none">
+      <div class="navbar-container">
+        <a href="{% url 'core:home' %}" class="logo-container">
+          <img src="{% static 'images/the_best_guys.png' %}" alt="logo" class="navbar-logo-image">
+        </a>
+
+        <div class="search-wrapper flex-fill">
+          <form class="search-form w-100" action="#" method="GET">
+            <div class="search-bar-wrapper">
+              <input type="text" class="search-bar form-control" placeholder="Search">
+            </div>
+          </form>
+        </div>
+
+        <div class="nav-button me-3">
+          {% comment %} <i class="bi bi-person navbar-buttons"></i> {% endcomment %}
+          <div class="nav-item mx-1 me-2 d-none d-lg-inline-flex">
+            <div class="d-flex">
+              <a href="#" class="outline-none" id="navbar-profile-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{% static 'images/blank-user-avatar.png' %}" alt="pfp" class="rounded-circle my-1" style="height: 40px; width: 40px;">
+              </a>
+              <ul class="dropdown-menu me-4 avatar-dropdown" aria-labelledby="navbar-profile-dropdown">
+                <li>
+                  <div class="d-flex justify-content-center flex-column align-items-center">
+                    <div class="w-100 d-flex justify-content-center mb-3">
+                      <img src="{% static 'images/blank-user-avatar.png' %}" alt="pfp" class="rounded-circle my-1" style="width: 100px; height: 100px;">
+                    </div>
+                    <div class="p-3 text-center">
+                      {% if user.is_authenticated %}
+                        <p class="m-0 w-fit-content">{{ user.first_name.capitalize }} {{ user.last_name.capitalize }} <span style="font-weight: 500;">(<span class="text-decoration-underline">@{{ user.username }}</span>)</span></p>
+                        <p class="m-0 w-fit-content">{{ user.email }}</p>
+                        {% else %}
+                        <p class="m-0 w-fit-content">Anonymous User <span style="font-weight: 500;">(Please log in)</span></p>
+                      {% endif %}
+                      <hr class="mb-0 w-100">
+                    </div>
+                  </div>
+                </li>
+                {% if user.is_authenticated %}
+                  <li><a href="{% url 'core:logout' %}" class="dropdown-item pb-2 px-3"><span class="bi bi-box-arrow-right me-2"></span>Logout</a></li>
+                {% else %}
+                  <li><a href="{% url 'core:login' %}" class="dropdown-item pb-2 px-3"><span class="bi bi-box-arrow-right me-2"></span>Login</a></li>
+                  <li><a href="{% url 'core:register' %}" class="dropdown-item pb-2 px-3"><span class="bi bi-person-plus-fill me-2"></span>Register</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-button ms-3">
+          <i class="bi bi-cart navbar-buttons"></i>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-container-phone d-md-none d-flex">
+      <div class="nav-items-wrapper-phone">
+        <a href="{% url 'core:home' %}" class="logo-container py-2">
+          <img src="{% static 'images/the_best_guys.png' %}" alt="logo" class="navbar-logo-image">
+        </a>
+        <div class="navbar-buttons-wrapper">
+          <div class="nav-button me-3">
+            <i class="bi bi-person navbar-buttons"></i>
+          </div>
+          <div class="nav-button ms-3">
+            <i class="bi bi-cart navbar-buttons"></i>
+          </div>
+        </div>
+      </div>
+      <div class="search-wrapper-phone">
+        <form class="search-form w-100" action="#" method="GET">
+          <div class="search-bar-wrapper">
+            <input type="text" class="search-bar form-control p-2" placeholder="Search">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-menu-container d-md-flex d-none">
+    <div class="product-menu-wrapper d-flex h-100">
+      <div class="product-menu-content d-flex h-100">
+        <div>
+          <div>
+            ALL PRODUCTS
+          </div>
+        </div>
+
+        <div>
+          <div>
+            Televisions
+          </div>
+        </div>
+
+        <div>
+          <div>
+            Accessories
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% comment %} <div class="breadcrumbs-container d-md-flex d-none">
+    <div class="breadcrumbs-wrapper">
+      <div class="breadcrumbs-content d-inline-flex">
+        {% for label, reverse_url in breadcrumbs.items %}
+          {% if not forloop.last %}
+            <a href="{{ reverse_url }}" class="breadcrumbs-link">{{ label }}</a> /
+          {% else %}
+            <span href="{{ reverse_url }}" class="breadcrumbs-text">{{ label }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div> {% endcomment %}
+
+  <div class="product-information-container">
+    <div class="product-information-wrapper">
+      <div class="product-information">
+        <div class="product-title-wrapper">
+          <span class="product-title">{{ product.long_name }}</span>
+          <span class="product-subtitle">{{ product.model }}</span>
+        </div>
+
+        <div class="product-details">
+          <div class="product-image-wrapper">
+            <div class="product-image-container">
+              <img src="{{ product.image_url }}" alt="product image" class="product-image">
+            </div>
+          </div>
+
+          <div class="product-price-wrapper">
+            <div class="product-price">{% if product.sale_price %}<s>${{ product.price|intcomma }}</s>{% else %}${{ product.price|intcomma }}{% endif %}</div>
+            {% if product.sale_price > 0.0 %}
+              <div class="product-sale-wrapper">
+                <div class="product-sale-content d-flex flex-column">
+                  <span class="d-flex badge bg-danger mb-2">SALE!</span>
+                  <span class="sale-price text-center"><b class="mt-1 d-inline">Now only for ${{ product.sale_price|intcomma }} ({{ discount_percent }}% off!)</b></span>
+                </div>
+              </div>
+            {% endif %}
+            <div class="w-100 mt-4">
+              <a class="btn btn-primary w-100" href="https://downloadmoreram.com/">BUY NOW</a>
+            </div>
+            <div class="w-100 mt-2">
+              <a class="btn btn-secondary w-100" href="https://downloadmoreram.com/">BUY ON AMAZON</a>
+            </div>
+            <div class="check-availability-wrapper">
+              <a href="https://downloadmoreram.com/" class="btn btn-success">
+                <i class="fa-solid fa-boxes-stacked pe-2"></i>Check availability in store
+              </a>
+            </div>
+
+            <div class="ratings-wrapper">
+              <span>
+                Rating: 5 stars (42 reviews)
+              </span>
+              <div class="ratings-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <div class="add-review">
+                <a href="https://youtu.be/mkdWR5DuhBA"><i class="fa-solid fa-pen me-2 mb-4"></i>Write a review</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="description-wrapper">
+          <div class="description multiline-clamped">
+            {{ product.description }}
+          </div>
+          <a onclick="toggle_show_more($(this));" class="show-more cursor-pointer">Show more.</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-specifications-wrapper">
+    <div class="product-specifications">
+      <span class="title">Technical Specifications</span>
+      <div class="specifications">
+        {% for spec in product.specifications.all %}
+          <div>
+            <span class="title">{{ spec.label }}</span>
+            <span class="specification">{{ spec.specification }}</span>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="subtext">
+        <span>* <a href="https://youtu.be/mkdWR5DuhBA">Terms and conditions apply.<a></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-reviews-wrapper">
+    <div class="product-reviews">
+      <span class="title">Reviews</span>
+
+      <div class="add-review">
+        <form method='POST' action="{% url 'store:post_review' product.slug %}" autocomplete="off">
+          {% csrf_token %}
+
+          <input name="title" type="text" class="form-control" id="review-title" placeholder="Title this something" maxlength="255">
+
+          <textarea name="review" id="review-body" rows="7" class="form-control" placeholder="Write a review"></textarea>
+
+          <div class="mt-3">
+            <div class="stars">
+              <input class="star star-1" id="star-1" type="radio" name="star" onclick="$('#star-rating').val(5);" checked/>
+              <label class="star star-1" for="star-1"></label>
+              <input class="star star-2" id="star-2" type="radio" name="star" onclick="$('#star-rating').val(4);"/>
+              <label class="star star-2" for="star-2"></label>
+              <input class="star star-3" id="star-3" type="radio" name="star" onclick="$('#star-rating').val(3);"/>
+              <label class="star star-3" for="star-3"></label>
+              <input class="star star-4" id="star-4" type="radio" name="star" onclick="$('#star-rating').val(2);"/>
+              <label class="star star-4" for="star-4"></label>
+              <input class="star star-5" id="star-5" type="radio" name="star" onclick="$('#star-rating').val(1);"/>
+              <label class="star star-5" for="star-5"></label>
+            </div>
+            <input type="number" name="star-rating" id="star-rating" hidden>
+          </div>
+
+          <div class="d-flex flex-column" id="review-recommended">
+            <span id="recommended-text">I definitely recommend this to others!</span>
+            <div class="form-group">
+              <span class="pointer recommended text-primary" onclick="recommend_product();"><i class="fa-solid fa-thumbs-up"></i></span>
+              <span class="pointer not-recommended text-danger" onclick="not_recommend_product();"><i class="fa-regular fa-thumbs-down"></i></span>
+            </div>
+            <input type="checkbox" id="recommended-to-others" name="recommended" hidden checked>
+          </div>
+
+          <button class="btn btn-primary form-control mt-3" type="submit">Post!</button>
+        </form>
+      </div>
+
+      <div class="reviews">
+        {% for review in paginated_reviews %}
+          <div class="review">
+            <div class="header">
+              <div class="profile-image-wrapper">
+                <img src="{% static 'images/blank-user-avatar.png' %}" alt="pfp">
+              </div>
+              <div class="review-title-wrapper">
+                <div class="review-rating-wrapper d-flex flex-row">
+                  <div class="review-rating">
+                    {% if review.star_rating == 5%}
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    {% elif review.star_rating == 4%}
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                    {% elif review.star_rating == 3 %}
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                    {% elif review.star_rating == 2 %}
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                    {% else %}
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                    {% endif %}
+                  </div>
+                  <span class="review-title ms-3">{{ review.title }}</span>
+                </div>
+                <span class="review-user">by {% if review.user %}{{ review.user.username }}{% else %}Anonymous User{% endif %} on {{ review.created_at }}</span>
+              </div>
+            </div>
+            <div class="body">
+              <div>
+                {{ review.body }}
+              </div>
+            </div>
+            <div class="user-feedback">
+              {% if review.recommended %}
+                <i class="fa fa-thumbs-up"></i>
+                <span>This user recommends this product</span>
+              {% else %}
+                <i class="fa fa-thumbs-down"></i>
+                <span>This user does not recommend this product</span>
+              {% endif %}
+            </div>
+
+            {% if user.is_superuser or review.user == user %}
+              <div class="delete-review">
+                <a href="{% url 'store:delete_review' product.slug review.pk %}"><i class="fa-regular fa-trash-can"></i> Delete Review</a>
+              </div>
+            {% endif %}
+          </div>
+        {% empty %}
+          <h2>No reviews yet</h2>
+        {% endfor %}
+
+        <div class="container px-4 my-5">
+          <ul class="pagination justify-content-center">
+            {% if paginated_reviews.has_previous %}
+              <li class="page-item"><a class="page-link" href="?page={{ paginated_reviews.previous_page_number }}"><span class="bi bi-caret-left-fill"></span></a></li>
+            {% else %}
+              <li class="page-item disabled"><a class="page-link"><span class="bi bi-caret-left-fill"></span></a></li>
+            {% endif %}
+
+            {% for i in paginated_reviews.paginator.page_range %}
+              {% if i == paginated_reviews.number %}
+                <li class="page-item active"><a class="page-link">{{ i }}</a></li>
+              {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ paginated_reviews.number }}">{{ i }}</a></li>
+              {% endif %}
+            {% endfor %}
+
+            {% if paginated_reviews.has_next %}
+              <li class="page-item"><a class="page-link" href="?page={{ paginated_reviews.next_page_number }}"><span class="bi bi-caret-right-fill"></span></a></li>
+            {% else %}
+              <li class="page-item disabled"><a class="page-link"><span class="bi bi-caret-right-fill"></span></a></li>
+            {% endif %}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
