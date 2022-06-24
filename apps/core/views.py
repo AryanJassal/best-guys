@@ -58,7 +58,7 @@ def register(request):
         form = RegisterForm(request.POST)
         errors = [] # Put all the error-checking in the form and get it to render it straight away from that; remove all this code from here
 
-        if len(form.data.get('username')) > 16:
+        if len(form.data.get('username')) > 32:
             errors.append('The username is too long.')
 
         if len(form.data.get('username')) < 2:
@@ -66,6 +66,15 @@ def register(request):
 
         if form.data.get('password') != form.data.get('confirm_password'):
             errors.append('The passwords do not match.')
+
+        if len(form.data.get('email')) > 127:
+            errors.append('The email is too long.')
+
+        if len(form.data.get('first_name')) > 127:
+            errors.append('The first name is too long')
+
+        if len(form.data.get('last_name')) > 127:
+            errors.append('The last name is too long')
 
         if User.objects.filter(email=form.data.get('email')).exists():
             errors.append('A user with this email already exists.')
@@ -75,6 +84,12 @@ def register(request):
 
         if len(form.data.get('password')) < 6:
             errors.append('The password is too short.')
+
+        if form.data.get('username') == '420' or form.data.get('username') == '69':
+            errors.append('Nice')
+
+        # if len(form.data.get('password')) > 127:
+        #     errors.append('The password is too long.')
 
         if errors:
             return render(request, 'accounts/register.html', {

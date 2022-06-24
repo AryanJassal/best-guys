@@ -10,4 +10,4 @@ You can not run this website locally (as of yet). This section will be updated w
 
 ## Notes
 
-This site is currently not dynamically expandable or support administrator/staff access. It only has two product pages. If I have extra time, then maybe I can work on improving the code base, but as I am the sole developer and this needs to be done following a strict deadline, some corners might be cut.
+The site is meant to be a quick prototype of sorts. When I have extra time, then maybe I can work on improving the code base, but as I am the sole developer and this needs to be done following a strict deadline, some corners might be cut.

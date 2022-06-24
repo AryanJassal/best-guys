@@ -10,7 +10,7 @@ def product_details(request, slug):
     product = Product.objects.get(slug=slug)
     discount_percent = round(((product.price - product.sale_price) / product.price) * 100, 2)
 
-    paginator = Paginator(product.reviews.all(), 10)
+    paginator = Paginator(Review.objects.filter(product=product), 10)
     page_number = request.GET.get('page')
     paginated_reviews = paginator.get_page(page_number)
 
@@ -25,6 +25,7 @@ def new_review(request, slug):
         # request_user = request.user
         new_review = Review(
             user=request.user if request.user.is_authenticated else None,
+            product=Product.objects.get(slug=slug),
             title=request.POST.get('title'),
             body=request.POST.get('review'),
             recommended=True if request.POST.get('recommended') else False,
@@ -32,14 +33,9 @@ def new_review(request, slug):
         )
         new_review.save()
 
-        product = Product.objects.get(slug=slug)
-        product.reviews.add(new_review)
-        product.save()
-        
         return redirect('store:product_details', slug=slug)
 
 def delete_review(request, slug, pk):
-    product = Product.objects.get(slug=slug)
-    review = product.reviews.get(pk=pk)
+    review = Review.objects.get(product=Product.objects.get(slug=slug), pk=pk)
     review.delete()
-    return redirect('store:product_details', slug=product.slug)
+    return redirect('store:product_details', slug=slug)

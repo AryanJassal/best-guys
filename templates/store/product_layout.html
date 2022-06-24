@@ -38,7 +38,7 @@
               <ul class="dropdown-menu me-4 avatar-dropdown" aria-labelledby="navbar-profile-dropdown">
                 <li>
                   <div class="d-flex justify-content-center flex-column align-items-center">
-                    <div class="w-100 d-flex justify-content-center mb-3">
+                    <div class="w-100 d-flex justify-content-center">
                       <img src="{% static 'images/blank-user-avatar.png' %}" alt="pfp" class="rounded-circle my-1" style="width: 100px; height: 100px;">
                     </div>
                     <div class="p-3 text-center">
@@ -75,7 +75,37 @@
         </a>
         <div class="navbar-buttons-wrapper">
           <div class="nav-button me-3">
-            <i class="bi bi-person navbar-buttons"></i>
+            <div class="nav-item mx-1 me-2 d-none d-lg-inline-flex">
+              <div class="d-flex">
+                <a href="#" class="outline-none" id="navbar-profile-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="{% static 'images/blank-user-avatar.png' %}" alt="pfp" class="rounded-circle my-1" style="height: 40px; width: 40px;">
+                </a>
+                <ul class="dropdown-menu me-4 avatar-dropdown" aria-labelledby="navbar-profile-dropdown">
+                  <li>
+                    <div class="d-flex justify-content-center flex-column align-items-center">
+                      <div class="w-100 d-flex justify-content-center">
+                        <img src="{% static 'images/blank-user-avatar.png' %}" alt="pfp" class="rounded-circle my-1" style="width: 100px; height: 100px;">
+                      </div>
+                      <div class="p-3 text-center">
+                        {% if user.is_authenticated %}
+                          <p class="m-0 w-fit-content">{{ user.first_name.capitalize }} {{ user.last_name.capitalize }} <span style="font-weight: 500;">(<span class="text-decoration-underline">@{{ user.username }}</span>)</span></p>
+                          <p class="m-0 w-fit-content">{{ user.email }}</p>
+                          {% else %}
+                          <p class="m-0 w-fit-content">Anonymous User <span style="font-weight: 500;">(Please log in)</span></p>
+                        {% endif %}
+                        <hr class="mb-0 w-100">
+                      </div>
+                    </div>
+                  </li>
+                  {% if user.is_authenticated %}
+                    <li><a href="{% url 'core:logout' %}" class="dropdown-item pb-2 px-3"><span class="bi bi-box-arrow-right me-2"></span>Logout</a></li>
+                  {% else %}
+                    <li><a href="{% url 'core:login' %}" class="dropdown-item pb-2 px-3"><span class="bi bi-box-arrow-right me-2"></span>Login</a></li>
+                    <li><a href="{% url 'core:register' %}" class="dropdown-item pb-2 px-3"><span class="bi bi-person-plus-fill me-2"></span>Register</a></li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
           </div>
           <div class="nav-button ms-3">
             <i class="bi bi-cart navbar-buttons"></i>
@@ -141,7 +171,7 @@
         <div class="product-details">
           <div class="product-image-wrapper">
             <div class="product-image-container">
-              <img src="{{ product.image_url }}" alt="product image" class="product-image">
+              <img src="{{ product.image.url }}" alt="product image" class="product-image">
             </div>
           </div>
 
@@ -220,21 +250,21 @@
         <form method='POST' action="{% url 'store:post_review' product.slug %}" autocomplete="off">
           {% csrf_token %}
 
-          <input name="title" type="text" class="form-control" id="review-title" placeholder="Title this something" maxlength="255">
+          <input name="title" type="text" class="form-control" id="review-title" placeholder="Title this something" maxlength="255" required>
 
-          <textarea name="review" id="review-body" rows="7" class="form-control" placeholder="Write a review"></textarea>
+          <textarea name="review" id="review-body" rows="7" class="form-control" placeholder="Write a review" maxlength="2047" required></textarea>
 
           <div class="mt-3">
             <div class="stars">
-              <input class="star star-1" id="star-1" type="radio" name="star" onclick="$('#star-rating').val(5);" checked/>
+              <input class="star star-1" id="star-1" type="radio" name="star" onclick="$('#star-rating').val(5);" checked>
               <label class="star star-1" for="star-1"></label>
-              <input class="star star-2" id="star-2" type="radio" name="star" onclick="$('#star-rating').val(4);"/>
+              <input class="star star-2" id="star-2" type="radio" name="star" onclick="$('#star-rating').val(4);">
               <label class="star star-2" for="star-2"></label>
-              <input class="star star-3" id="star-3" type="radio" name="star" onclick="$('#star-rating').val(3);"/>
+              <input class="star star-3" id="star-3" type="radio" name="star" onclick="$('#star-rating').val(3);">
               <label class="star star-3" for="star-3"></label>
-              <input class="star star-4" id="star-4" type="radio" name="star" onclick="$('#star-rating').val(2);"/>
+              <input class="star star-4" id="star-4" type="radio" name="star" onclick="$('#star-rating').val(2);">
               <label class="star star-4" for="star-4"></label>
-              <input class="star star-5" id="star-5" type="radio" name="star" onclick="$('#star-rating').val(1);"/>
+              <input class="star star-5" id="star-5" type="radio" name="star" onclick="$('#star-rating').val(1);">
               <label class="star star-5" for="star-5"></label>
             </div>
             <input type="number" name="star-rating" id="star-rating" hidden>
@@ -288,11 +318,13 @@
                       <i class="fa-regular fa-star"></i>
                       <i class="fa-regular fa-star"></i>
                     {% else %}
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
+                      <span style="color: #ff6622;">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                      </span>
                     {% endif %}
                   </div>
                   <span class="review-title ms-3">{{ review.title }}</span>
@@ -307,11 +339,15 @@
             </div>
             <div class="user-feedback">
               {% if review.recommended %}
-                <i class="fa fa-thumbs-up"></i>
-                <span>This user recommends this product</span>
+                <div class="text-success">
+                  <i class="fa fa-thumbs-up"></i>
+                  <span>This user recommends this product</span>
+                </div>
               {% else %}
-                <i class="fa fa-thumbs-down"></i>
-                <span>This user does not recommend this product</span>
+                <div class="text-danger">
+                  <i class="fa fa-thumbs-down"></i>
+                  <span>This user does not recommend this product</span>
+                </div>
               {% endif %}
             </div>
 
