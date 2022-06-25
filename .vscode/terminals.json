@@ -26,7 +26,7 @@
       "open": true,
       "focus": false,
       "commands": [
-        "sass --watch --no-source-map static/styles/core.scss:static/styles/base_styles.css apps/store/static/styles/main.scss:apps/store/static/styles/styles.css static/core/styles.scss:/static/core/styles.css"
+        "sass --watch --no-source-map static/base/styles/base.scss:static/base/styles/base.css static/store/styles/store.scss:static/store/styles/store.css static/core/styles/core.scss:static/core/styles/core.css"
       ]
     }
   ]

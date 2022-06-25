@@ -1,2 +1,73 @@
-<a href="{% url 'store:product_details' 'hyperspectral-tv' %}">hyperspectral tv</a>
-<a href="{% url 'store:product_details' 'glass-s' %}">glass-s</a>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block full_title %}Home | Kolofon Technologies{% endblock full_title %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'core/styles/core.css' %}">
+{% endblock styles %}
+
+{% block body %}
+  <nav class="navbar navbar-expand-lg navbar-dark position-absolute w-100">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'core:home' %}">Kolofon Technologies</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Store</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <section id="home">
+    <div class="background-blur" style="background-image: url({% static 'images/splash.jpg' %});"></div>
+    <div class="splash-image-container">
+      <img src="{% static 'images/splash.jpg' %}" alt="splash image">
+    </div>
+    <h1><i>Kolofon Technologies</i></h1>
+    <p class="subtext">You dream the future. We make it.</p>
+  </section>
+
+  <section id="what-we-do">
+    <h2>What do we do?</h2>
+    <p class="subtext">We are a team of highly skilled and experienced developers, scientists, and engineers to ensure that dreams are not just left as dreams, but rather are brought to fruition. Everyone dreams about the future. Here, at Kolofon Technologies, we build it.</p>
+  </section>
+
+  <section id="latest-products">
+    <h2>Latest products</h2>
+    <p class="subtext">We are constantly launching shiny new things which are all built upon revolutionary technology. See what's new:</p>
+
+    <div class="product-spotlight-container">
+      {% for product in product_spotlight %}
+        <div class="product-spotlight">
+          <h3>{{ product.name }}</h3>
+          <div class="product">
+            <div class="product-spotlight-image">
+              <img src="{{ product.image.url }}" alt="product spotlight">
+            </div>
+            <div class="product-spotlight-text">
+              <p>
+                {% if product.description %}
+                  {{ product.description }}
+                {% else %}
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio aliquam voluptatibus animi culpa vero. Ut similique ab, numquam beatae eveniet et, quia ad voluptate velit harum architecto repudiandae officiis temporibus.
+                {% endif %}
+              </p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock body %}

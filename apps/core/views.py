@@ -2,13 +2,18 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.hashers import make_password
+from django.db.models import Q
 
 from .forms import LoginForm, RegisterForm
 from .models import User
+from ..store.models import Product
 
 
 def home(request):
-    return render(request, 'core/home.html')
+    product_spotlight = Product.objects.filter(Q(slug='glass-s') | Q(slug='hyperspectral-tv'))
+    return render(request, 'core/home.html', {
+        'product_spotlight': product_spotlight
+    })
 
 def _login(request):
     if request.method == 'GET':
@@ -56,7 +61,7 @@ def register(request):
         })
     elif request.method == 'POST':
         form = RegisterForm(request.POST)
-        errors = [] # Put all the error-checking in the form and get it to render it straight away from that; remove all this code from here
+        errors = [] #TODO Put all the error-checking in the form and get it to render it straight away from that; remove all this code from here
 
         if len(form.data.get('username')) > 32:
             errors.append('The username is too long.')
@@ -87,9 +92,6 @@ def register(request):
 
         if form.data.get('username') == '420' or form.data.get('username') == '69':
             errors.append('Nice')
-
-        # if len(form.data.get('password')) > 127:
-        #     errors.append('The password is too long.')
 
         if errors:
             return render(request, 'accounts/register.html', {

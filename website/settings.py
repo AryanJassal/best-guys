@@ -147,3 +147,6 @@ STATICFILES_DIRS = [
 # media stuff
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# other
+LIVERELOAD_HOST = '192.168.1.85'
