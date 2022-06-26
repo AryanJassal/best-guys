@@ -5,11 +5,11 @@
 {% block title %}{{ product.name }}{% endblock %}
 
 {% block styles %}
-  <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'store/styles/store.css' %}">
 {% endblock %}
 
 {% block scripts %}
-  <script src="{% static 'js/script.js' %}"></script>
+  <script src="{% static 'store/js/script.js' %}"></script>
 {% endblock %}
 
 {% block body %}
@@ -17,7 +17,7 @@
     <div class="navbar-container-wrapper d-md-flex d-none">
       <div class="navbar-container">
         <a href="{% url 'core:home' %}" class="logo-container">
-          <img src="{% static 'images/the_best_guys.png' %}" alt="logo" class="navbar-logo-image">
+          <img src="{% static 'images/the-best-guys.png' %}" alt="logo" class="navbar-logo-image">
         </a>
 
         <div class="search-wrapper flex-fill">
@@ -29,7 +29,6 @@
         </div>
 
         <div class="nav-button me-3">
-          {% comment %} <i class="bi bi-person navbar-buttons"></i> {% endcomment %}
           <div class="nav-item mx-1 me-2 d-none d-lg-inline-flex">
             <div class="d-flex">
               <a href="#" class="outline-none" id="navbar-profile-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -64,14 +63,31 @@
         </div>
 
         <div class="nav-button ms-3">
-          <i class="bi bi-cart navbar-buttons"></i>
+          <div class="nav-item me-2 d-none d-lg-inline-flex">
+            <div class="d-flex">
+              <a href="#" class="outline-none" id="navbar-cart-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-cart navbar-buttons"></i>
+              </a>
+              <ul class="dropdown-menu me-4 cart-dropdown" aria-labelledby="navbar-cart-dropdown">
+                <li style="height: 400px; width: 300px; text-align: center;">
+                  <h3>Your Cart</h3>
+                  <h4 class="mt-3" style="font-size: 16pt;">Looks a bit empty here...</h4>
+                </li>
+                <li>
+                  <div class="d-flex justify-content-center">
+                    <a href="#" class="btn btn-success w-100 mx-3 mb-2"><i class="fa-solid fa-cart-shopping pe-1"></i> Checkout Now</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="navbar-container-phone d-md-none d-flex">
       <div class="nav-items-wrapper-phone">
         <a href="{% url 'core:home' %}" class="logo-container py-2">
-          <img src="{% static 'images/the_best_guys.png' %}" alt="logo" class="navbar-logo-image">
+          <img src="{% static 'images/the-best-guys.png' %}" alt="logo" class="navbar-logo-image">
         </a>
         <div class="navbar-buttons-wrapper">
           <div class="nav-button me-3">
@@ -186,30 +202,61 @@
               </div>
             {% endif %}
             <div class="w-100 mt-4">
-              <a class="btn btn-primary w-100" href="https://downloadmoreram.com/">BUY NOW</a>
+              <a class="btn btn-success w-100" href="https://downloadmoreram.com/"><i class="fa-solid fa-cart-plus pe-2"></i>ADD TO CART</a>
+            </div>
+            <div class="w-100 mt-3">
+              <a class="btn btn-primary w-100" href="https://downloadmoreram.com/"><i class="fa-solid fa-money-check-dollar pe-2"></i>BUY NOW</a>
             </div>
             <div class="w-100 mt-2">
-              <a class="btn btn-secondary w-100" href="https://downloadmoreram.com/">BUY ON AMAZON</a>
+              <a class="btn btn-secondary w-100" href="https://downloadmoreram.com/"><i class="fa-brands fa-amazon pe-2"></i>BUY ON AMAZON</a>
             </div>
             <div class="check-availability-wrapper">
-              <a href="https://downloadmoreram.com/" class="btn btn-success">
+              <a href="#" onclick="alert('This product is available!');" class="btn btn-success">
                 <i class="fa-solid fa-boxes-stacked pe-2"></i>Check availability in store
               </a>
             </div>
 
             <div class="ratings-wrapper">
               <span>
-                Rating: 5 stars (42 reviews)
+                Rating: {{ average_rating }} {% if average_rating == 1 %}star{% else %}stars{% endif %} ({{ all_reviews.count }} {% if all_reviews.count == 1 %}review{% else %}reviews{% endif %})
               </span>
               <div class="ratings-stars">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
+                {% if average_rating == 5 %}
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                {% elif average_rating == 4 %}
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                {% elif average_rating == 3 %}
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                {% elif average_rating == 2 %}
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                {% else %}
+                  <span style="color: #ff6622;">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                  </span>
+                {% endif %}
               </div>
               <div class="add-review">
-                <a href="https://youtu.be/mkdWR5DuhBA"><i class="fa-solid fa-pen me-2 mb-4"></i>Write a review</a>
+                <a href="#write-a-review"><i class="fa-solid fa-pen me-2 mb-4"></i>Write a review</a>
               </div>
             </div>
           </div>
@@ -242,6 +289,7 @@
     </div>
   </div>
 
+  <section id="write-a-review"></section>
   <div class="product-reviews-wrapper">
     <div class="product-reviews">
       <span class="title">Reviews</span>
@@ -293,13 +341,13 @@
               <div class="review-title-wrapper">
                 <div class="review-rating-wrapper d-flex flex-row">
                   <div class="review-rating">
-                    {% if review.star_rating == 5%}
+                    {% if review.star_rating == 5 %}
                       <i class="fa-solid fa-star"></i>
                       <i class="fa-solid fa-star"></i>
                       <i class="fa-solid fa-star"></i>
                       <i class="fa-solid fa-star"></i>
                       <i class="fa-solid fa-star"></i>
-                    {% elif review.star_rating == 4%}
+                    {% elif review.star_rating == 4 %}
                       <i class="fa-solid fa-star"></i>
                       <i class="fa-solid fa-star"></i>
                       <i class="fa-solid fa-star"></i>

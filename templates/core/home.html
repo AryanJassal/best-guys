@@ -36,38 +36,57 @@
       <img src="{% static 'images/splash.jpg' %}" alt="splash image">
     </div>
     <h1><i>Kolofon Technologies</i></h1>
-    <p class="subtext">You dream the future. We make it.</p>
+    <p>You dream the future. We make it.</p>
   </section>
 
   <section id="what-we-do">
     <h2>What do we do?</h2>
-    <p class="subtext">We are a team of highly skilled and experienced developers, scientists, and engineers to ensure that dreams are not just left as dreams, but rather are brought to fruition. Everyone dreams about the future. Here, at Kolofon Technologies, we build it.</p>
+    <p class="subtext">We are a team of highly skilled and experienced developers, scientists, and engineers to ensure that dreams are not just left as dreams, but rather are brought to fruition. Everyone dreams about the future. Here, at Kolofon Technologies, we build it. All members are willing to pour everything they have in order to make the dreams into reality.</p>
   </section>
-
+  
   <section id="latest-products">
     <h2>Latest products</h2>
-    <p class="subtext">We are constantly launching shiny new things which are all built upon revolutionary technology. See what's new:</p>
-
+    <p class="subtext">We are constantly launching shiny new things which are all built upon revolutionary technology. See what's new!</p>
+    
     <div class="product-spotlight-container">
       {% for product in product_spotlight %}
-        <div class="product-spotlight">
-          <h3>{{ product.name }}</h3>
-          <div class="product">
-            <div class="product-spotlight-image">
-              <img src="{{ product.image.url }}" alt="product spotlight">
-            </div>
-            <div class="product-spotlight-text">
-              <p>
-                {% if product.description %}
-                  {{ product.description }}
-                {% else %}
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio aliquam voluptatibus animi culpa vero. Ut similique ab, numquam beatae eveniet et, quia ad voluptate velit harum architecto repudiandae officiis temporibus.
-                {% endif %}
-              </p>
-            </div>
+      <div class="product-spotlight">
+        <h3><a href="{% url 'store:product_details' product.slug %}">{{ product.name }}</a></h3>
+        <div class="product">
+          <div class="product-spotlight-image">
+            <img src="{{ product.image.url }}" alt="product spotlight">
+          </div>
+          <div class="product-spotlight-text">
+            <p>
+              {% if product.description %}
+              {{ product.description }}
+              {% else %}
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio aliquam voluptatibus animi culpa vero. Ut similique ab, numquam beatae eveniet et, quia ad voluptate velit harum architecto repudiandae officiis temporibus.
+              {% endif %}
+            </p>
+            
+            <a href="{% url 'store:product_details' product.slug %}" class="btn btn-primary">Go to product</a>
           </div>
         </div>
+      </div>
       {% endfor %}
     </div>
   </section>
-{% endblock body %}
+  
+    <section id="available-retailers">
+      <h2>Available retailers</h2>
+      <p class="subtext">Our company is dedicated to deliver. Thus, we cannot also take the burden of delivering the products directly to everyone's doorsteps. This is where our retail partners come in. Kolofon Technologies has signed an exclusive contract with select trusted companies to sell our products. A list of all retailers is listed below.</p>
+
+      <div class="retailers-wrapper">
+        <div>
+          <div class="retail-image-container">
+            <img src="{% static 'images/the-best-guys.png' %}" alt="the best guys" style="height: 2rem;">
+          </div>
+          <a href="{% url 'store:filter_products' 'all' %}">The Best Guys</a>
+        </div>
+        <div>
+          Hang on tight! More coming soon!
+        </div>
+      </div>
+    </section>
+  {% endblock body %}

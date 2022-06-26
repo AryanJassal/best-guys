@@ -1,14 +1,23 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
+from django.http import HttpResponse
 
 from .models import *
 
-# def products(request, filter):
-#     return HttpResponse('testing worked')
+def filter_products(request, filter):
+    return HttpResponse('testing worked')
 
 def product_details(request, slug):
     product = Product.objects.get(slug=slug)
     discount_percent = round(((product.price - product.sale_price) / product.price) * 100, 2)
+    reviews = Review.objects.all()
+
+    stars = [i.star_rating for i in Review.objects.filter(product=product)]
+
+    try:
+        average_rating = round(sum(stars) / len(stars))
+    except:
+        average_rating = 5
 
     paginator = Paginator(Review.objects.filter(product=product), 10)
     page_number = request.GET.get('page')
@@ -17,12 +26,13 @@ def product_details(request, slug):
     return render(request, 'store/product_layout.html', {
         'product': product,
         'discount_percent': discount_percent if discount_percent > 99 else round(discount_percent),
-        'paginated_reviews': paginated_reviews
+        'paginated_reviews': paginated_reviews,
+        'all_reviews': Review.objects.all(),
+        'average_rating': average_rating
     })
 
 def new_review(request, slug):
     if request.method == 'POST':
-        # request_user = request.user
         new_review = Review(
             user=request.user if request.user.is_authenticated else None,
             product=Product.objects.get(slug=slug),

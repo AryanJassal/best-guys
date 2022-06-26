@@ -1,6 +1,12 @@
+@import '../../base/styles/_mixins.scss';
+@import '../../base/styles/_breakpoints.scss';
+
+html, head, body {
+  overflow-x: hidden;
+}
+
 body {
   background-color: #222222;
-  padding-bottom: 4rem;
   color: white;
 }
 
@@ -23,6 +29,7 @@ nav {
     height: 100vh;
     width: 100vw;
     filter: blur(5px);
+    z-index: -1;
   }
   
   .splash-image-container {
@@ -45,7 +52,7 @@ nav {
     position: absolute;
     top: 25%;
     left: 108px;
-    font-size: 72pt;
+    font-size: 6rem;
   }
   
   p {
@@ -53,26 +60,56 @@ nav {
     position: absolute;
     top: 40%;
     left: 108px;
-    font-size: 24pt;
+    font-size: 2rem;
   }
 }
 
-#what-we-do, #latest-products {
+@media screen and (max-width: $md) {
+  #home {
+    h1 {
+      width: 100%;
+      top: 40%;
+      left: 0;
+      font-size: 2.5rem;
+    }
+    
+    p {
+      width: 100%;
+      top: 50%;
+      left: 0;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+section {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1.5rem 0;
   flex-direction: column;
   text-align: center;
+
+  &:nth-child(odd) {
+    background-color: #243b9a;
+  }
   
   h2 {
-    // animation: slide_in_text ease 2s;
     margin-bottom: 1rem;
+    font-size: 32pt;
   }
   
   .subtext {
-    // animation: slide_up_text ease 2s;
-    max-width: 55%;
+    max-width: 50%;
+  }
+}
+
+@media screen and (max-width: $md) {
+  section {
+    .subtext {
+      max-width: 100%;
+      padding: 1rem;
+    }
   }
 }
 
@@ -81,10 +118,13 @@ nav {
 }
 
 #latest-products {
+  padding-bottom: 4rem;
+
   .product-spotlight-container {
     display: flex;
     align-items: center;
     flex-direction: column;
+
     .product-spotlight {
       margin-top: 4rem;
       display: flex;
@@ -102,19 +142,71 @@ nav {
         
         .product-spotlight-image {
           width: 20rem;
+          max-height: 15rem;
           margin-right: 2rem;
+          padding: 0.5rem;
+          background-color: white;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
           
           img {
             width: 100%;
             height: auto;
-            border-radius: 8px;
           }
         }
 
         .product-spotlight-text {
           max-width: 60%;
+
+          p {
+            @include multiline-clamp(7);
+          }
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: $md) {
+  #latest-products > .product-spotlight-container > .product-spotlight {
+    width: 80%;
+  }
+}
+
+#available-retailers {
+  .retailers-wrapper {
+    padding-top: 2rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+    div {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 1rem;
+
+      a {
+        text-decoration: none;
+        font-size: 16pt;
+        margin-left: 1.5rem;
+      }
+    }
+
+    &:last-child {
+      margin-left: 1rem;
+      font-size: 16pt;
+    }
+  }
+}
+
+@media screen and (max-width: $md) {
+  #available-retailers > .retailers-wrapper {
+    width: 100%;
+    padding: 1rem;
+
+    &:last-child {
+      margin-left: 0;
     }
   }
 }

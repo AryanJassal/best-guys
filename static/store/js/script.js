@@ -38,3 +38,7 @@ function not_recommend_product() {
   $('#recommended-text').text('I do not recommend this to others!');
 
 }
+
+function is_ellipsis_active(e) {
+  return (e.offsetWidth < e.scrollWidth);
+}

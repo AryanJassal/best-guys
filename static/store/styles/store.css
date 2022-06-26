@@ -30,8 +30,11 @@
   padding: 1rem 0;
   display: flex;
 }
-.navbar-container .nav-button ul.dropdown-menu {
-  margin-left: -90px !important;
+.navbar-container .nav-button ul.dropdown-menu.avatar-dropdown {
+  margin-left: -110px !important;
+}
+.navbar-container .nav-button ul.dropdown-menu.cart-dropdown {
+  margin-left: -130px !important;
 }
 
 .navbar-logo-image {
@@ -154,7 +157,6 @@
   justify-content: center;
   align-items: center;
   background-color: #ececec;
-  margin-top: 0.5rem;
 }
 .product-information-wrapper .product-information {
   display: flex;
