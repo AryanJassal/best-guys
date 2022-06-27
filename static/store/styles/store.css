@@ -147,21 +147,86 @@
   justify-content: center;
   align-items: center;
   margin: 0 0.25rem;
-  padding: 0 0.25rem;
+  padding: 0 0.5rem;
   cursor: pointer;
   font-weight: 500;
   width: fit-content;
   transition: background-color 150ms;
+  height: 100%;
 }
 .product-menu-content div:hover {
   background-color: #185792;
 }
-.product-menu-content div div {
+.product-menu-content div a {
   color: white;
   background-color: inherit;
   transition: inherit;
+  text-decoration: none;
 }
 
+.content {
+  padding: 3rem;
+}
+.content h1 {
+  margin-bottom: 2rem;
+}
+.content .container-fluid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.content .container-fluid .card {
+  max-width: 20rem;
+  max-height: 35rem;
+  background-color: #454545;
+  margin: 1rem 1rem 0 1rem;
+  padding: 0 1rem 1rem 1rem;
+}
+.content .container-fluid .card .card-title {
+  font-weight: 600;
+  margin: 0.5rem 0 1rem 0;
+}
+.content .container-fluid .card .product-image {
+  background-color: white;
+  border-radius: 7px;
+  height: 13rem;
+  display: flex;
+  align-items: center;
+}
+.content .container-fluid .card .product-image img {
+  width: 100%;
+  height: auto;
+}
+.content .container-fluid .card .card-description {
+  margin-top: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.content .container-fluid:first-child {
+  margin-right: 1rem;
+}
+.content .container-fluid:last-child {
+  margin-left: 1rem;
+}
+
+@media screen and (max-width: 576px) {
+  .content {
+    padding: 0.5rem;
+  }
+  .content h1 {
+    text-align: center;
+  }
+  .content .container-fluid {
+    margin: 0 !important;
+    justify-content: center;
+  }
+
+  .card {
+    margin: 1rem 0 0 0 !important;
+  }
+}
 .product-information-wrapper {
   display: flex;
   justify-content: center;

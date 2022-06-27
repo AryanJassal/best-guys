@@ -1,0 +1,181 @@
+{% load static %}
+
+<div class="brand-navbar-container">
+  <div class="navbar-container-wrapper d-md-flex d-none">
+    <div class="navbar-container">
+      <a href="{% url 'core:home' %}" class="logo-container">
+        <img src="{% static 'images/the-best-guys.png' %}" alt="logo" class="navbar-logo-image">
+      </a>
+
+      <div class="search-wrapper flex-fill">
+        <form class="search-form w-100" action="#" method="GET">
+          <div class="search-bar-wrapper">
+            <input type="text" class="search-bar form-control" placeholder="Search">
+          </div>
+        </form>
+      </div>
+
+      <div class="nav-button me-3">
+        <div class="nav-item mx-1 me-2 d-none d-lg-inline-flex">
+          <div class="d-flex">
+            <a href="#" class="outline-none" id="navbar-profile-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{% static 'images/blank-user-avatar.png' %}" alt="pfp" class="rounded-circle my-1" style="height: 40px; width: 40px;">
+            </a>
+            <ul class="dropdown-menu me-4 avatar-dropdown" aria-labelledby="navbar-profile-dropdown">
+              <li>
+                <div class="d-flex justify-content-center flex-column align-items-center">
+                  <div class="w-100 d-flex justify-content-center">
+                    <img src="{% static 'images/blank-user-avatar.png' %}" alt="pfp" class="rounded-circle my-1" style="width: 100px; height: 100px;">
+                  </div>
+                  <div class="p-3 text-center">
+                    {% if user.is_authenticated %}
+                      <p class="m-0 w-fit-content">{{ user.first_name.capitalize }} {{ user.last_name.capitalize }} <span style="font-weight: 500;">(<span class="text-decoration-underline">@{{ user.username }}</span>)</span></p>
+                      <p class="m-0 w-fit-content">{{ user.email }}</p>
+                      {% else %}
+                      <p class="m-0 w-fit-content">Anonymous User <span style="font-weight: 500;">(Please log in)</span></p>
+                    {% endif %}
+                    <hr class="mb-0 w-100">
+                  </div>
+                </div>
+              </li>
+              {% if user.is_authenticated %}
+                <li><a href="{% url 'core:logout' %}" class="dropdown-item pb-2 px-3"><span class="bi bi-box-arrow-right me-2"></span>Logout</a></li>
+              {% else %}
+                <li><a href="{% url 'core:login' %}" class="dropdown-item pb-2 px-3"><span class="bi bi-box-arrow-right me-2"></span>Login</a></li>
+                <li><a href="{% url 'core:register' %}" class="dropdown-item pb-2 px-3"><span class="bi bi-person-plus-fill me-2"></span>Register</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-button ms-3">
+        <div class="nav-item me-2 d-none d-lg-inline-flex">
+          <div class="d-flex">
+            <a href="#" class="outline-none" id="navbar-cart-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-cart navbar-buttons"></i>
+            </a>
+            <ul class="dropdown-menu me-4 cart-dropdown" aria-labelledby="navbar-cart-dropdown">
+              <li style="height: 400px; width: 300px; text-align: center;">
+                <h3>Your Cart</h3>
+                <h4 class="mt-3" style="font-size: 16pt;">Looks a bit empty here...</h4>
+              </li>
+              <li>
+                <div class="d-flex justify-content-center">
+                  <a href="#" class="btn btn-success w-100 mx-3 mb-2"><i class="fa-solid fa-cart-shopping pe-1 btn-disabled"></i> Checkout Now</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar-container-phone d-md-none d-flex">
+    <div class="nav-items-wrapper-phone">
+      <a href="{% url 'core:home' %}" class="logo-container py-2">
+        <img src="{% static 'images/the-best-guys.png' %}" alt="logo" class="navbar-logo-image">
+      </a>
+      <div class="navbar-buttons-wrapper">
+        <div class="nav-button me-3">
+          <div class="nav-item mx-1 me-2 d-none d-lg-inline-flex">
+            <div class="d-flex">
+              <a href="#" class="outline-none" id="navbar-profile-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{% static 'images/blank-user-avatar.png' %}" alt="pfp" class="rounded-circle my-1" style="height: 40px; width: 40px;">
+              </a>
+              <ul class="dropdown-menu me-4 avatar-dropdown" aria-labelledby="navbar-profile-dropdown">
+                <li>
+                  <div class="d-flex justify-content-center flex-column align-items-center">
+                    <div class="w-100 d-flex justify-content-center">
+                      <img src="{% static 'images/blank-user-avatar.png' %}" alt="pfp" class="rounded-circle my-1" style="width: 100px; height: 100px;">
+                    </div>
+                    <div class="p-3 text-center">
+                      {% if user.is_authenticated %}
+                        <p class="m-0 w-fit-content">{{ user.first_name.capitalize }} {{ user.last_name.capitalize }} <span style="font-weight: 500;">(<span class="text-decoration-underline">@{{ user.username }}</span>)</span></p>
+                        <p class="m-0 w-fit-content">{{ user.email }}</p>
+                        {% else %}
+                        <p class="m-0 w-fit-content">Anonymous User <span style="font-weight: 500;">(Please log in)</span></p>
+                      {% endif %}
+                      <hr class="mb-0 w-100">
+                    </div>
+                  </div>
+                </li>
+                {% if user.is_authenticated %}
+                  <li><a href="{% url 'core:logout' %}" class="dropdown-item pb-2 px-3"><span class="bi bi-box-arrow-right me-2"></span>Logout</a></li>
+                {% else %}
+                  <li><a href="{% url 'core:login' %}" class="dropdown-item pb-2 px-3"><span class="bi bi-box-arrow-right me-2"></span>Login</a></li>
+                  <li><a href="{% url 'core:register' %}" class="dropdown-item pb-2 px-3"><span class="bi bi-person-plus-fill me-2"></span>Register</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="nav-button ms-3">
+          <div class="nav-item me-2 d-none d-lg-inline-flex">
+            <div class="d-flex">
+              <a href="#" class="outline-none" id="navbar-cart-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-cart navbar-buttons"></i>
+              </a>
+              <ul class="dropdown-menu me-4 cart-dropdown" aria-labelledby="navbar-cart-dropdown">
+                <li style="height: 400px; width: 300px; text-align: center;">
+                  <h3>Your Cart</h3>
+                  <h4 class="mt-3" style="font-size: 16pt;">Looks a bit empty here...</h4>
+                </li>
+                <li>
+                  <div class="d-flex justify-content-center">
+                    <a href="#" class="btn btn-success w-100 mx-3 mb-2"><i class="fa-solid fa-cart-shopping pe-1 btn-disabled"></i> Checkout Now</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="search-wrapper-phone">
+      <form class="search-form w-100" action="#" method="GET">
+        <div class="search-bar-wrapper">
+          <input type="text" class="search-bar form-control p-2" placeholder="Search">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="product-menu-container d-md-flex d-none">
+  <div class="product-menu-wrapper d-flex h-100">
+    <div class="product-menu-content">
+      <div>
+        <a href="{% url 'store:filter_products' 'all' %}">
+          ALL PRODUCTS
+        </a>
+      </div>
+
+      <div>
+        <a href="{% url 'store:filter_products' 'televisions' %}">
+          Televisions
+        </a>
+      </div>
+
+      <div>
+        <a href="{% url 'store:filter_products' 'accessories' %}">
+          Accessories
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% comment %} <div class="breadcrumbs-container d-md-flex d-none">
+  <div class="breadcrumbs-wrapper">
+    <div class="breadcrumbs-content d-inline-flex">
+      {% for label, reverse_url in breadcrumbs.items %}
+        {% if not forloop.last %}
+          <a href="{{ reverse_url }}" class="breadcrumbs-link">{{ label }}</a> /
+        {% else %}
+          <span href="{{ reverse_url }}" class="breadcrumbs-text">{{ label }}</span>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div> {% endcomment %}

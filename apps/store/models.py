@@ -11,10 +11,9 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     sale_price = models.DecimalField(max_digits=10, decimal_places=2, default=-1.0)
-    # image_url = models.URLField()
     image = models.ImageField(upload_to='products/', blank=True)
-    # reviews = models.ManyToManyField('Review', blank=True, on_delete=models.CASCADE)
     specifications = models.ManyToManyField('Specification', blank=True)
+    categories = models.ManyToManyField('Category', blank=True)
 
     def __str__(self):
         return self.name
@@ -37,3 +36,13 @@ class Specification(models.Model):
 
     def __str__(self):
         return self.label
+
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'Categories'

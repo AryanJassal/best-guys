@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}Filter products{% endblock title %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'store/styles/store.css' %}">
+{% endblock %}
+
+{% block body %}
+  {% include 'store/_navbar.html' %}
+
+  <div class="content">
+    <h1>
+      {% if filter_type == 'all' %}
+        All products
+      {% elif filter_type == 'category' %}
+        All {{ filter.name }}
+      {% else %}
+        Internal error!
+      {% endif %}
+    </h1>
+
+    <div class="container-fluid">
+      {% for product in products %}
+        <div class="card">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <div class="product-image p-2">
+            <img src="{{ product.image.url }}" alt="product image">
+          </div>
+          <p class="card-description">{{ product.description }}</p>
+          <p class="card-price">${{ product.price|intcomma }}</p>
+          <a href="{% url 'store:product_details' product.slug %}" class="btn btn-primary">View Details</a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock body %}

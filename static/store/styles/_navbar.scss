@@ -152,26 +152,28 @@
 .product-menu-content {
   display: flex;
   height: 100% !important;
-  
+
   div {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 0.25rem;
-    padding: 0 0.25rem;
+    padding: 0 0.5rem;
     cursor: pointer;
     font-weight: 500;
     width: fit-content;
     transition: background-color 150ms;
+    height: 100%;
     
     &:hover {
       background-color: $background-alt-hover;
     }
 
-    div {
+    a {
       color: $text-color;
       background-color: inherit;
       transition: inherit;
+      text-decoration: none;
     }
   }
 }
@@ -211,3 +213,75 @@
 //     }
 //   }
 // }
+
+.content {
+  padding: 3rem;
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  .container-fluid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .card {
+      max-width: 20rem;
+      max-height: 35rem;
+      background-color: $background-light;
+      margin: 1rem 1rem 0 1rem;
+      padding: 0 1rem 1rem 1rem;
+
+      .card-title {
+        font-weight: 600;
+        margin: 0.5rem 0 1rem 0;
+      }
+
+      .product-image {
+        background-color: white;
+        border-radius: 7px;
+        height: 13rem;
+        display: flex;
+        align-items: center;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .card-description {
+        margin-top: 1rem;
+        @include multiline-clamp(6);
+      }
+    }
+
+    &:first-child {
+      margin-right: 1rem;
+    }
+
+    &:last-child {
+      margin-left: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: $sm) {
+  .content {
+    padding: 0.5rem;
+
+    h1 {
+      text-align: center;
+    }
+
+    .container-fluid {
+      margin: 0 !important;
+      justify-content: center;
+    }
+  }
+
+  .card {
+    margin: 1rem 0 0 0 !important;
+  }
+}

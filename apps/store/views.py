@@ -1,11 +1,24 @@
+from unittest import findTestCases
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
-from django.http import HttpResponse
 
 from .models import *
 
 def filter_products(request, filter):
-    return HttpResponse('testing worked')
+    if filter == 'all':
+        products = Product.objects.all()
+        filter_type = 'all'
+        filter = None
+    else:
+        products = Product.objects.filter(categories__slug=filter)
+        filter_type = 'category'
+        filter = Category.objects.get(slug=filter)
+
+    return render(request, 'store/filter_products.html', {
+        'products': products,
+        'filter_type': filter_type,
+        'filter': filter
+    })
 
 def product_details(request, slug):
     product = Product.objects.get(slug=slug)
