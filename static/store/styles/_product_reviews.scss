@@ -17,6 +17,10 @@
     .add-review {
       margin: 2rem 0;
 
+      #review-title, #review-body {
+        background-color: $background;
+      }
+
       #review-title {
         border-radius: 5px 5px 0 0;
       }
@@ -145,6 +149,18 @@
 @media screen and (max-width: $md) {
   .product-reviews {
     width: 95%;
+  }
+}
+
+ul.pagination {
+  li.page-item a.page-link {
+    background-color: $background-light;
+    border-color: $background-lighter;
+    color: $text-color;
+  }
+
+  li.page-item.active a.page-link {
+    background-color: $color-primary;
   }
 }
 

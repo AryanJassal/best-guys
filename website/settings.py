@@ -10,14 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-# from pathlib import Path
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -149,4 +147,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # other
-LIVERELOAD_HOST = '192.168.1.85'
+import socket
+host_name = socket.gethostname()
+ip_address = socket.gethostbyname(host_name)
+LIVERELOAD_HOST = ip_address

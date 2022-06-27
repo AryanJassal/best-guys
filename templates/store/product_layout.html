@@ -75,7 +75,7 @@
                 </li>
                 <li>
                   <div class="d-flex justify-content-center">
-                    <a href="#" class="btn btn-success w-100 mx-3 mb-2"><i class="fa-solid fa-cart-shopping pe-1"></i> Checkout Now</a>
+                    <a href="#" class="btn btn-success w-100 mx-3 mb-2"><i class="fa-solid fa-cart-shopping pe-1 btn-disabled"></i> Checkout Now</a>
                   </div>
                 </li>
               </ul>
@@ -124,7 +124,24 @@
             </div>
           </div>
           <div class="nav-button ms-3">
-            <i class="bi bi-cart navbar-buttons"></i>
+            <div class="nav-item me-2 d-none d-lg-inline-flex">
+              <div class="d-flex">
+                <a href="#" class="outline-none" id="navbar-cart-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-cart navbar-buttons"></i>
+                </a>
+                <ul class="dropdown-menu me-4 cart-dropdown" aria-labelledby="navbar-cart-dropdown">
+                  <li style="height: 400px; width: 300px; text-align: center;">
+                    <h3>Your Cart</h3>
+                    <h4 class="mt-3" style="font-size: 16pt;">Looks a bit empty here...</h4>
+                  </li>
+                  <li>
+                    <div class="d-flex justify-content-center">
+                      <a href="#" class="btn btn-success w-100 mx-3 mb-2"><i class="fa-solid fa-cart-shopping pe-1 btn-disabled"></i> Checkout Now</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>

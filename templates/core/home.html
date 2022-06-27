@@ -32,9 +32,9 @@
   
   <section id="home">
     <div class="background-blur" style="background-image: url({% static 'images/splash.jpg' %});"></div>
-    <div class="splash-image-container">
+    {% comment %} <div class="splash-image-container">
       <img src="{% static 'images/splash.jpg' %}" alt="splash image">
-    </div>
+    </div> {% endcomment %}
     <h1><i>Kolofon Technologies</i></h1>
     <p>You dream the future. We make it.</p>
   </section>
@@ -74,19 +74,19 @@
   </section>
   
     <section id="available-retailers">
-      <h2>Available retailers</h2>
+      <h2>Partnered retailers</h2>
       <p class="subtext">Our company is dedicated to deliver. Thus, we cannot also take the burden of delivering the products directly to everyone's doorsteps. This is where our retail partners come in. Kolofon Technologies has signed an exclusive contract with select trusted companies to sell our products. A list of all retailers is listed below.</p>
 
       <div class="retailers-wrapper">
-        <div>
-          <div class="retail-image-container">
-            <img src="{% static 'images/the-best-guys.png' %}" alt="the best guys" style="height: 2rem;">
-          </div>
-          <a href="{% url 'store:filter_products' 'all' %}">The Best Guys</a>
-        </div>
-        <div>
+        <a href="{% url 'store:filter_products' 'all' %}">
+          <img src="{% static 'images/the-best-guys.png' %}" alt="the best guys" style="height: 3rem;">
+        </a>
+        <a href="https://el-go-go-5a501.firebaseapp.com/index.html">
+          <img src="{% static 'images/el-gogo.png' %}" alt="el-gogo" style="height: 2.5rem;">
+        </a>
+        {% comment %} <div>
           Hang on tight! More coming soon!
-        </div>
+        </div> {% endcomment %}
       </div>
     </section>
   {% endblock body %}

@@ -25,11 +25,12 @@ nav {
   
   .background-blur {
     background-size: cover;
+    background-position: center center;
     position: absolute;
     height: 100vh;
     width: 100vw;
     filter: blur(5px);
-    z-index: -1;
+    z-index: -2;
   }
   
   .splash-image-container {
@@ -42,7 +43,7 @@ nav {
     position: absolute;
     
     img {
-      z-index: 0;
+      z-index: -5;
       width: 100vw;
     }
   }
@@ -51,7 +52,7 @@ nav {
     animation: slide_in_text ease 2s;
     position: absolute;
     top: 25%;
-    left: 108px;
+    left: 5%;
     font-size: 6rem;
   }
   
@@ -61,24 +62,6 @@ nav {
     top: 40%;
     left: 108px;
     font-size: 2rem;
-  }
-}
-
-@media screen and (max-width: $md) {
-  #home {
-    h1 {
-      width: 100%;
-      top: 40%;
-      left: 0;
-      font-size: 2.5rem;
-    }
-    
-    p {
-      width: 100%;
-      top: 50%;
-      left: 0;
-      font-size: 1.5rem;
-    }
   }
 }
 
@@ -101,15 +84,6 @@ section {
   
   .subtext {
     max-width: 50%;
-  }
-}
-
-@media screen and (max-width: $md) {
-  section {
-    .subtext {
-      max-width: 100%;
-      padding: 1rem;
-    }
   }
 }
 
@@ -168,45 +142,123 @@ section {
   }
 }
 
-@media screen and (max-width: $md) {
-  #latest-products > .product-spotlight-container > .product-spotlight {
-    width: 80%;
-  }
-}
-
 #available-retailers {
   .retailers-wrapper {
     padding-top: 2rem;
     width: 50%;
     display: flex;
-    flex-direction: column;
+    align-content: center;
+    // justify-content: space-between;
 
-    div {
+    a {
       display: flex;
-      flex-direction: row;
-      margin-bottom: 1rem;
-
-      a {
-        text-decoration: none;
-        font-size: 16pt;
-        margin-left: 1.5rem;
-      }
-    }
-
-    &:last-child {
-      margin-left: 1rem;
+      align-items: center;
+      text-decoration: none;
       font-size: 16pt;
+      margin: 0 1.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: $lg) {
+  #home {
+    h1 {
+      width: 100%;
+      top: 40%;
+      left: 0;
+      font-size: 4.5rem;
+    }
+    
+    p {
+      width: 100%;
+      top: 50%;
+      left: 0;
+      font-size: 2rem;
     }
   }
 }
 
 @media screen and (max-width: $md) {
+  #home {
+    h1 {
+      width: 100%;
+      top: 40%;
+      left: 0;
+      font-size: 3rem;
+    }
+    
+    p {
+      width: 100%;
+      top: 50%;
+      left: 0;
+      font-size: 1.5rem;
+    }
+  }
+
   #available-retailers > .retailers-wrapper {
     width: 100%;
     padding: 1rem;
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
-    &:last-child {
-      margin-left: 0;
+    a {
+      padding-top: 1rem;
+    }
+  }
+
+  section {
+    .subtext {
+      max-width: 100%;
+      padding: 1rem;
+    }
+  }
+
+  #latest-products > .product-spotlight-container > .product-spotlight {
+    width: 100%;
+    padding: 1rem;
+
+    h3 {
+      text-align: center;
+    }
+
+    .product {
+      flex-direction: column;
+      align-items: center;
+
+      .product-spotlight-image {
+        margin: 0;
+      }
+
+      .product-spotlight-text {
+        padding: 1rem;
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $sm) {
+  #home {
+    h1 {
+      width: 100%;
+      top: 40%;
+      left: 0;
+      font-size: 2rem;
+    }
+    
+    p {
+      width: 100%;
+      top: 50%;
+      left: 0;
+      font-size: 1.2rem;
+    }
+  }
+
+  #latest-products {
+    .product-spotlight-image {
+      width: 100% !important;
     }
   }
 }

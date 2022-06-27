@@ -6,7 +6,7 @@
 }
 
 .brand-navbar-container {
-  background-color: #ffffff;
+  background-color: #222222;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,7 @@
 }
 
 .navbar-container-wrapper {
-  background-color: #ffffff;
+  background-color: #222222;
   height: 4rem;
   justify-content: center;
 }
@@ -29,6 +29,16 @@
 .navbar-container .nav-button {
   padding: 1rem 0;
   display: flex;
+}
+.navbar-container .nav-button ul.dropdown-menu {
+  background-color: #222222;
+  color: white;
+}
+.navbar-container .nav-button ul.dropdown-menu li .dropdown-item {
+  color: white;
+}
+.navbar-container .nav-button ul.dropdown-menu li .dropdown-item:hover {
+  color: #222222;
 }
 .navbar-container .nav-button ul.dropdown-menu.avatar-dropdown {
   margin-left: -110px !important;
@@ -69,7 +79,7 @@
 }
 
 .search-bar {
-  background-color: #ffffff;
+  background-color: #222222;
 }
 
 .navbar-container-phone {
@@ -147,7 +157,7 @@
   background-color: #185792;
 }
 .product-menu-content div div {
-  color: #ffffff;
+  color: white;
   background-color: inherit;
   transition: inherit;
 }
@@ -156,7 +166,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ececec;
+  background-color: #454545;
 }
 .product-information-wrapper .product-information {
   display: flex;
@@ -191,7 +201,7 @@
 }
 .product-information .product-details .product-price-wrapper {
   flex-shrink: 0;
-  background-color: #ffffff;
+  background-color: #222222;
   border-radius: 5px;
   padding: 0 1.5rem;
 }
@@ -230,7 +240,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: #222222;
   border-radius: 5px;
   height: auto;
   max-height: 500px;
@@ -286,7 +296,7 @@
   justify-content: center;
   margin-top: -2px;
   font-size: 1.2rem;
-  color: #2f4f4f;
+  color: #d1d1d1;
 }
 .ratings-wrapper .ratings-stars {
   display: flex;
@@ -294,7 +304,7 @@
   margin-top: 0.5rem;
   font-size: 24px;
   color: rgb(227, 218, 85);
-  text-shadow: 0 0 1px #2f4f4f;
+  text-shadow: 0 0 1px #d1d1d1;
 }
 .ratings-wrapper .add-review {
   display: flex;
@@ -306,7 +316,7 @@
   transition: color 150ms ease-in-out;
 }
 .ratings-wrapper .add-review a:hover {
-  color: #777e7e;
+  color: #bbbbbb;
 }
 
 .description-wrapper {
@@ -352,6 +362,9 @@
 .product-reviews-wrapper .product-reviews .add-review {
   margin: 2rem 0;
 }
+.product-reviews-wrapper .product-reviews .add-review #review-title, .product-reviews-wrapper .product-reviews .add-review #review-body {
+  background-color: #222222;
+}
 .product-reviews-wrapper .product-reviews .add-review #review-title {
   border-radius: 5px 5px 0 0;
 }
@@ -376,7 +389,7 @@
 .product-reviews-wrapper .product-reviews .review {
   margin-top: 1.4rem;
   min-height: 10rem;
-  background: #f3f3f3;
+  background: #666666;
   border: 1px solid #b5b5b5;
   border-radius: 5px;
   position: relative;
@@ -417,7 +430,7 @@
   flex-shrink: 0;
 }
 .product-reviews-wrapper .product-reviews .review .header .review-rating-wrapper .ratings-help {
-  color: #2f4f4f;
+  color: #d1d1d1;
 }
 .product-reviews-wrapper .product-reviews .review .header .review-rating-wrapper .review-title {
   display: flex;
@@ -458,6 +471,15 @@
     width: 95%;
   }
 }
+ul.pagination li.page-item a.page-link {
+  background-color: #454545;
+  border-color: #666666;
+  color: white;
+}
+ul.pagination li.page-item.active a.page-link {
+  background-color: #0d6efd;
+}
+
 div.stars {
   display: inline-flex;
   flex-direction: row-reverse;
@@ -523,10 +545,10 @@ label.star:before {
   border: 1px solid #b5b5b5;
 }
 .product-specifications-wrapper .product-specifications .specifications div:nth-child(odd) {
-  background-color: #ececec;
+  background-color: #454545;
 }
 .product-specifications-wrapper .product-specifications .specifications div:nth-child(even) {
-  background-color: #ffffff;
+  background-color: #222222;
 }
 .product-specifications-wrapper .product-specifications .specifications div {
   display: flex;
@@ -549,7 +571,7 @@ label.star:before {
 }
 .product-specifications-wrapper .product-specifications .subtext {
   font-size: 0.8rem;
-  color: #696969;
+  color: #c1c1c1;
 }
 
 @media screen and (min-width: 992px) {
@@ -581,5 +603,6 @@ label.star:before {
   }
 }
 body {
-  background-color: #ffffff;
+  background-color: #222222;
+  color: white;
 }
