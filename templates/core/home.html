@@ -59,9 +59,9 @@
           <div class="product-spotlight-text">
             <p>
               {% if product.description %}
-              {{ product.description }}
+                {{ product.description }}
               {% else %}
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio aliquam voluptatibus animi culpa vero. Ut similique ab, numquam beatae eveniet et, quia ad voluptate velit harum architecto repudiandae officiis temporibus.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio aliquam voluptatibus animi culpa vero. Ut similique ab, numquam beatae eveniet et, quia ad voluptate velit harum architecto repudiandae officiis temporibus.
               {% endif %}
             </p>
             
@@ -75,7 +75,7 @@
   
     <section id="available-retailers">
       <h2>Partnered retailers</h2>
-      <p class="subtext">Our company is dedicated to deliver. Thus, we cannot also take the burden of delivering the products directly to everyone's doorsteps. This is where our retail partners come in. Kolofon Technologies has signed an exclusive contract with select trusted companies to sell our products. A list of all retailers is listed below.</p>
+      <p class="subtext">Our company is dedicated to deliver. Thus, we cannot also take the burden of delivering the products directly to everyone's doorsteps. This is where our retail partners come in. Kolofon Technologies has signed an exclusive contract with select trusted companies to sell our products. All partnered retailers are listed below.</p>
 
       <div class="retailers-wrapper">
         <a href="{% url 'store:filter_products' 'all' %}">

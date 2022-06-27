@@ -10,7 +10,6 @@ def filter_products(request, filter):
 def product_details(request, slug):
     product = Product.objects.get(slug=slug)
     discount_percent = round(((product.price - product.sale_price) / product.price) * 100, 2)
-    reviews = Review.objects.all()
 
     stars = [i.star_rating for i in Review.objects.filter(product=product)]
 
@@ -27,7 +26,7 @@ def product_details(request, slug):
         'product': product,
         'discount_percent': discount_percent if discount_percent > 99 else round(discount_percent),
         'paginated_reviews': paginated_reviews,
-        'all_reviews': Review.objects.all(),
+        'all_reviews': Review.objects.filter(product=product),
         'average_rating': average_rating
     })
 
