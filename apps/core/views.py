@@ -106,3 +106,6 @@ def register(request):
         return redirect('core:home')
     else:
         return HttpResponse('Only GET and POST requests allowed.')
+
+def error_404_handler(request):
+    return render(request, '404.html')

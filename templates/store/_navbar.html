@@ -8,9 +8,9 @@
       </a>
 
       <div class="search-wrapper flex-fill">
-        <form class="search-form w-100" action="#" method="GET">
+        <form class="search-form w-100" action="{% url 'store:search_products' %}" method="GET" autocomplete="off">
           <div class="search-bar-wrapper">
-            <input type="text" class="search-bar form-control" placeholder="Search">
+            <input type="text" name="q" class="search-bar form-control" placeholder="Search" value="{{ search_val }}">
           </div>
         </form>
       </div>
@@ -62,7 +62,7 @@
               </li>
               <li>
                 <div class="d-flex justify-content-center">
-                  <a href="#" class="btn btn-success w-100 mx-3 mb-2"><i class="fa-solid fa-cart-shopping pe-1 btn-disabled"></i> Checkout Now</a>
+                  <button class="btn btn-success w-100 mx-3 mb-2" disabled><i class="fa-solid fa-cart-shopping pe-1"></i> Checkout Now</button>
                 </div>
               </li>
             </ul>
@@ -123,7 +123,7 @@
                 </li>
                 <li>
                   <div class="d-flex justify-content-center">
-                    <a href="#" class="btn btn-success w-100 mx-3 mb-2"><i class="fa-solid fa-cart-shopping pe-1 btn-disabled"></i> Checkout Now</a>
+                    <button class="btn btn-success w-100 mx-3 mb-2" disabled><i class="fa-solid fa-cart-shopping pe-1"></i> Checkout Now</button>
                   </div>
                 </li>
               </ul>
@@ -145,23 +145,23 @@
 <div class="product-menu-container d-md-flex d-none">
   <div class="product-menu-wrapper d-flex h-100">
     <div class="product-menu-content">
-      <div>
-        <a href="{% url 'store:filter_products' 'all' %}">
+      <a href="{% url 'store:filter_products' 'all' %}">
+        <div>
           ALL PRODUCTS
-        </a>
-      </div>
+        </div>
+      </a>
 
-      <div>
-        <a href="{% url 'store:filter_products' 'televisions' %}">
+      <a href="{% url 'store:filter_products' 'televisions' %}">
+          <div>
           Televisions
-        </a>
-      </div>
+        </div>
+      </a>
 
-      <div>
-        <a href="{% url 'store:filter_products' 'accessories' %}">
+      <a href="{% url 'store:filter_products' 'accessories' %}">
+        <div>
           Accessories
-        </a>
-      </div>
+        </div>
+      </a>
     </div>
   </div>
 </div>

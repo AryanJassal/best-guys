@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block full_title %}Uh-Oh!{% endblock full_title %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'store/styles/store.css' %}">
+{% endblock %}
+
+{% block body %}
+  {% include 'store/_navbar.html' %}
+
+  <div class="container d-flex justify-content-center align-items-center mt-5 flex-column">
+    <h1>Uh-Oh!</h1>
+    <h3>The page you are trying to access does not exist!</h3>
+  </div>
+{% endblock body %}

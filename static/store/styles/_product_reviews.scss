@@ -152,17 +152,17 @@
   }
 }
 
-ul.pagination {
-  li.page-item a.page-link {
-    background-color: $background-light;
-    border-color: $background-lighter;
-    color: $text-color;
-  }
+// ul.pagination {
+//   li.page-item a.page-link {
+//     background-color: $background-light;
+//     border-color: $background-lighter;
+//     color: $text-color;
+//   }
 
-  li.page-item.active a.page-link {
-    background-color: $color-primary;
-  }
-}
+//   li.page-item.active a.page-link {
+//     background-color: $color-primary;
+//   }
+// }
 
 div.stars {
   display: inline-flex;

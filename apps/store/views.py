@@ -1,6 +1,6 @@
-from unittest import findTestCases
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 from .models import *
 
@@ -19,6 +19,17 @@ def filter_products(request, filter):
         'filter_type': filter_type,
         'filter': filter
     })
+
+def search_products(request):
+    if request.method == 'GET':
+        q = request.GET.get('q')
+        products = Product.objects.filter(Q(categories__name=q) | Q(name__icontains=q) | Q(long_name__icontains=q) | Q(slug__icontains=q) | Q(model__icontains=q))
+
+        return render(request, 'store/filter_products.html', {
+            'products': products,
+            'filter_type': 'search',
+            'search_val': q
+        })
 
 def product_details(request, slug):
     product = Product.objects.get(slug=slug)

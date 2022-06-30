@@ -65,26 +65,26 @@
 
 @media screen and (max-width: $lg) {
   .product-specifications {
-    width: 95%
+    width: 95%;
   }
 }
 
-@media screen and (min-width: $md) {
-  .product-specifications .specifications div .title {
-    width: 30%;
-  }
+// @media screen and (min-width: $md) {
+//   .product-specifications .specifications div .title {
+//     width: 30%;
+//   }
 
-  .product-specifications .specifications div .specification {
-    width: 70%;
-  }
-}
+//   .product-specifications .specifications div .specification {
+//     width: 70%;
+//   }
+// }
 
 @media screen and (max-width: $md) {
-  .product-specifications .specifications div .title {
-    width: 50%;
+  .product-specifications .specifications div span.title {
+    width: 50% !important;
   }
 
-  .product-specifications .specifications div .specification {
-    width: 50%;
+  .product-specifications .specifications div span.specification {
+    width: 50% !important;
   }
 }

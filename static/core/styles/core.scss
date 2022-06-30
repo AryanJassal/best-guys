@@ -263,6 +263,24 @@ section {
   }
 }
 
+@media screen and (max-height: 300px) {
+  #home p {
+    top: 75% !important;
+  }
+}
+
+@media screen and (max-height: 512px) {
+  #home p {
+    top: 60%;
+  }
+}
+
+@media screen and (max-height: $md) {
+  #home p {
+    top: 50%;
+  }
+}
+
 @keyframes slide_in_title {
   0% {
     margin-top: -30px;
