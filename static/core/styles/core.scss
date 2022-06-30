@@ -169,7 +169,6 @@ section {
   }
 }
 
-
 #contact-us {
   form {
     width: 50%;
@@ -255,6 +254,18 @@ section {
       .product-spotlight-text {
         padding: 1rem;
         max-width: 100%;
+      }
+    }
+  }
+
+  #contact-us {
+    form {
+      padding: 0 2rem;
+      width: 100%;
+      text-align: left;
+  
+      .form-group {
+        margin-bottom: 1rem;
       }
     }
   }

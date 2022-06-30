@@ -216,6 +216,15 @@ section .subtext {
     padding: 1rem;
     max-width: 100%;
   }
+
+  #contact-us form {
+    padding: 0 2rem;
+    width: 100%;
+    text-align: left;
+  }
+  #contact-us form .form-group {
+    margin-bottom: 1rem;
+  }
 }
 @media screen and (max-width: 576px) {
   #home h1 {

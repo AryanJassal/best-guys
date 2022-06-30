@@ -220,6 +220,14 @@
     margin: 1rem 0 0 0 !important;
   }
 }
+@media screen and (max-width: 768px) {
+  .navbar-items-wrapper-phone > .navbar-buttons-wrapper ul.dropdown-menu.avatar-dropdown {
+    margin-left: -110px !important;
+  }
+  .navbar-items-wrapper-phone > .navbar-buttons-wrapper ul.dropdown-menu.cart-dropdown {
+    margin-left: -130px !important;
+  }
+}
 .product-information-wrapper {
   display: flex;
   justify-content: center;
