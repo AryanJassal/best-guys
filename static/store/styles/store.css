@@ -25,6 +25,7 @@
   flex-wrap: nowrap;
   flex-direction: row;
   align-items: center;
+  width: 100%;
 }
 .navbar-container .nav-button {
   padding: 1rem 0;

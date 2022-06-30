@@ -10,7 +10,9 @@
 {% block body %}
   <nav class="navbar navbar-expand-lg navbar-dark position-absolute w-100">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'core:home' %}">Kolofon Technologies</a>
+      <a class="navbar-brand" href="{% url 'core:home' %}">
+        <img src="{% static 'images/kolofon-technologies.png' %}" alt="Kolofon Technologies" style="height: 3rem;">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -22,9 +24,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'store:filter_products' 'all' %}">Store</a>
           </li>
-          {% comment %} <li class="nav-item">
-            <a class="nav-link" href="#">Contact Us</a>
-          </li> {% endcomment %}
+          <li class="nav-item">
+            <a class="nav-link" href="#contact-us">Contact Us</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -32,9 +34,6 @@
   
   <section id="home">
     <div class="background-blur" style="background-image: url({% static 'images/splash.jpg' %});"></div>
-    {% comment %} <div class="splash-image-container">
-      <img src="{% static 'images/splash.jpg' %}" alt="splash image">
-    </div> {% endcomment %}
     <h1><i>Kolofon Technologies</i></h1>
     <p>You dream the future. We make it.</p>
   </section>
@@ -73,20 +72,53 @@
     </div>
   </section>
   
-    <section id="available-retailers">
-      <h2>Partnered retailers</h2>
-      <p class="subtext">Our company is dedicated to deliver. Thus, we cannot also take the burden of delivering the products directly to everyone's doorsteps. This is where our retail partners come in. Kolofon Technologies has signed an exclusive contract with select trusted companies to sell our products. All partnered retailers are listed below.</p>
+  <section id="available-retailers">
+    <h2>Partnered retailers</h2>
+    <p class="subtext">Our company is dedicated to deliver. Thus, we cannot also take the burden of delivering the products directly to everyone's doorsteps. This is where our retail partners come in. Kolofon Technologies has signed an exclusive contract with select trusted companies to sell our products. All partnered retailers are listed below.</p>
 
-      <div class="retailers-wrapper">
-        <a href="{% url 'store:filter_products' 'all' %}">
-          <img src="{% static 'images/the-best-guys.png' %}" alt="the best guys" style="height: 3rem;">
-        </a>
-        <a href="https://el-go-go-5a501.firebaseapp.com/index.html">
-          <img src="{% static 'images/el-gogo.png' %}" alt="el-gogo" style="height: 2.5rem;">
-        </a>
-        {% comment %} <div>
-          Hang on tight! More coming soon!
-        </div> {% endcomment %}
-      </div>
-    </section>
+    <div class="retailers-wrapper">
+      <a href="{% url 'store:filter_products' 'all' %}">
+        <img src="{% static 'images/the-best-guys.png' %}" alt="the best guys" style="height: 3rem;">
+      </a>
+      <a href="https://el-go-go-5a501.firebaseapp.com/index.html">
+        <img src="{% static 'images/el-gogo.png' %}" alt="el-gogo" style="height: 2.5rem;">
+      </a>
+      {% comment %} <div>
+        Hang on tight! More coming soon!
+      </div> {% endcomment %}
+    </div>
+  </section>
+
+  <section id="collaborators">
+    <h2>Collaborators</h2>
+    <p class="subtext">Special thanks to these collaborators who have given us massive support. Without these people, the website would not have been possible.</p>
+
+    <div class="collaborators-wrapper">
+      <p>Matthew Thompson</p>
+      <p>Cayden Hawron</p>
+    </div>
+  </section>
+
+  <section id="contact-us">
+    <h2>Contact us</h2>
+    <p class="subtext">
+      If you have any questions or concerns, contact us via this form. We will definitely not get back to you for anything. Your concerns will promtly be ignored. But, if for whatever reason, you still desire to contact us, then feel free:
+
+      <form action="#" method="POST">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea class="form-control" id="message" rows="3" placeholder="Leave us a message!"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit!</button>
+      </form>
+    </p>
+  </section>
   {% endblock body %}

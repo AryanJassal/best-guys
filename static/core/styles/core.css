@@ -140,6 +140,19 @@ section .subtext {
   margin: 0 1.5rem;
 }
 
+#collaborators .collaborators-wrapper p {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+#contact-us form {
+  width: 50%;
+  text-align: left;
+}
+#contact-us form .form-group {
+  margin-bottom: 1rem;
+}
+
 @media screen and (max-width: 992px) {
   #home h1 {
     width: 100%;

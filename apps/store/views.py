@@ -34,7 +34,6 @@ def search_products(request):
 def product_details(request, slug):
     product = Product.objects.get(slug=slug)
     discount_percent = round(((product.price - product.sale_price) / product.price) * 100, 2)
-
     stars = [i.star_rating for i in Review.objects.filter(product=product)]
 
     try:
@@ -42,7 +41,7 @@ def product_details(request, slug):
     except:
         average_rating = 5
 
-    paginator = Paginator(Review.objects.filter(product=product), 10)
+    paginator = Paginator(Review.objects.filter(product=product).order_by('-created_at'), 10)
     page_number = request.GET.get('page')
     paginated_reviews = paginator.get_page(page_number)
 

@@ -160,6 +160,27 @@ section {
   }
 }
 
+#collaborators {
+  .collaborators-wrapper {
+    p {
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+
+#contact-us {
+  form {
+    width: 50%;
+    text-align: left;
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
 @media screen and (max-width: $lg) {
   #home {
     h1 {
