@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.humanize',
-    'livereload',
+    # 'livereload',
     'django.contrib.staticfiles',
 
     # custom apps
@@ -164,7 +164,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # other
-import socket
-host_name = socket.gethostname()
-ip_address = socket.gethostbyname(host_name)
-LIVERELOAD_HOST = ip_address
+# import socket
+# host_name = socket.gethostname()
+# ip_address = socket.gethostbyname(host_name)
+# LIVERELOAD_HOST = ip_address
