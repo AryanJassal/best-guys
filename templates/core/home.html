@@ -105,6 +105,7 @@
       If you have any questions or concerns, contact us via this form. We will definitely not get back to you for anything. Your concerns will promtly be ignored. But, if for whatever reason, you still desire to contact us, then feel free:
 
       <form action="#" method="POST">
+        {% csrf_token %}
         <div class="form-group">
           <label for="name">Full Name</label>
           <input type="text" class="form-control" id="name" placeholder="Enter name">
