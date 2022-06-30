@@ -242,7 +242,7 @@
               {% endif %}
             </div>
 
-            {% if user.is_superuser or review.user == user %}
+            {% if user.is_superuser or review.user == user or user.is_staff %}
               <div class="delete-review">
                 <a href="{% url 'store:delete_review' product.slug review.pk %}"><i class="fa-regular fa-trash-can"></i> Delete Review</a>
               </div>
