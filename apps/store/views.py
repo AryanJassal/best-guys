@@ -51,7 +51,7 @@ def product_details(request, slug):
         'paginated_reviews': paginated_reviews,
         'all_reviews': Review.objects.filter(product=product),
         'average_rating': average_rating,
-        'allow_review': AllowReviews.objects.get(pk=1).allow,
+        'allow_reviews': AllowReviews.objects.get(pk=1).allow,
     })
 
 def new_review(request, slug):
