@@ -25,4 +25,4 @@ urlpatterns = [
     path('store/', include(('apps.store.urls', 'store'))),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# urlpatterns.append(re_path(r'^.*',error_404_handler))
+urlpatterns.append(re_path(r'^.*',error_404_handler))
