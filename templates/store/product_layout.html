@@ -134,40 +134,44 @@
       <span class="title">Reviews</span>
 
       <div class="add-review">
-        <form method='POST' action="{% url 'store:post_review' product.slug %}" autocomplete="off">
-          {% csrf_token %}
+        {% if allow_reviews %}
+          <form method='POST' action="{% url 'store:post_review' product.slug %}" autocomplete="off">
+            {% csrf_token %}
 
-          <input name="title" type="text" class="form-control" id="review-title" placeholder="Title this something" maxlength="255" required>
+            <input name="title" type="text" class="form-control" id="review-title" placeholder="Title this something" maxlength="255" required>
 
-          <textarea name="review" id="review-body" rows="7" class="form-control" placeholder="Write a review" maxlength="2047" required></textarea>
+            <textarea name="review" id="review-body" rows="7" class="form-control" placeholder="Write a review" maxlength="2047" required></textarea>
 
-          <div class="mt-3">
-            <div class="stars">
-              <input class="star star-1" id="star-1" type="radio" name="star" onclick="$('#star-rating').val(5);" checked>
-              <label class="star star-1" for="star-1"></label>
-              <input class="star star-2" id="star-2" type="radio" name="star" onclick="$('#star-rating').val(4);">
-              <label class="star star-2" for="star-2"></label>
-              <input class="star star-3" id="star-3" type="radio" name="star" onclick="$('#star-rating').val(3);">
-              <label class="star star-3" for="star-3"></label>
-              <input class="star star-4" id="star-4" type="radio" name="star" onclick="$('#star-rating').val(2);">
-              <label class="star star-4" for="star-4"></label>
-              <input class="star star-5" id="star-5" type="radio" name="star" onclick="$('#star-rating').val(1);">
-              <label class="star star-5" for="star-5"></label>
+            <div class="mt-3">
+              <div class="stars">
+                <input class="star star-1" id="star-1" type="radio" name="star" onclick="$('#star-rating').val(5);" checked>
+                <label class="star star-1" for="star-1"></label>
+                <input class="star star-2" id="star-2" type="radio" name="star" onclick="$('#star-rating').val(4);">
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-3" id="star-3" type="radio" name="star" onclick="$('#star-rating').val(3);">
+                <label class="star star-3" for="star-3"></label>
+                <input class="star star-4" id="star-4" type="radio" name="star" onclick="$('#star-rating').val(2);">
+                <label class="star star-4" for="star-4"></label>
+                <input class="star star-5" id="star-5" type="radio" name="star" onclick="$('#star-rating').val(1);">
+                <label class="star star-5" for="star-5"></label>
+              </div>
+              <input type="number" name="star-rating" id="star-rating" hidden>
             </div>
-            <input type="number" name="star-rating" id="star-rating" hidden>
-          </div>
 
-          <div class="d-flex flex-column" id="review-recommended">
-            <span id="recommended-text">I definitely recommend this to others!</span>
-            <div class="form-group">
-              <span class="pointer recommended text-primary" onclick="recommend_product();"><i class="fa-solid fa-thumbs-up"></i></span>
-              <span class="pointer not-recommended text-danger" onclick="not_recommend_product();"><i class="fa-regular fa-thumbs-down"></i></span>
+            <div class="d-flex flex-column" id="review-recommended">
+              <span id="recommended-text">I definitely recommend this to others!</span>
+              <div class="form-group">
+                <span class="pointer recommended text-primary" onclick="recommend_product();"><i class="fa-solid fa-thumbs-up"></i></span>
+                <span class="pointer not-recommended text-danger" onclick="not_recommend_product();"><i class="fa-regular fa-thumbs-down"></i></span>
+              </div>
+              <input type="checkbox" id="recommended-to-others" name="recommended" hidden checked>
             </div>
-            <input type="checkbox" id="recommended-to-others" name="recommended" hidden checked>
-          </div>
 
-          <button class="btn btn-primary form-control mt-3" type="submit">Post!</button>
-        </form>
+            <button class="btn btn-primary form-control mt-3" type="submit">Post!</button>
+          </form>
+        {% else %}
+          <h3 class="ms-2">Reviews have been disabled for this product.</h3>
+        {% endif %}
       </div>
 
       <div class="reviews">

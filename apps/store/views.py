@@ -50,7 +50,8 @@ def product_details(request, slug):
         'discount_percent': discount_percent if discount_percent > 99 else round(discount_percent),
         'paginated_reviews': paginated_reviews,
         'all_reviews': Review.objects.filter(product=product),
-        'average_rating': average_rating
+        'average_rating': average_rating,
+        'allow_review': AllowReviews.objects.get(pk=1).allow,
     })
 
 def new_review(request, slug):

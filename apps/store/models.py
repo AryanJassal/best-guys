@@ -46,3 +46,12 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'Categories'
+
+class AllowReviews(models.Model):
+    allow = models.BooleanField(default=False)
+
+    def __str__(self):
+        return 'Not allowed' if not self.allow else 'Allowed'
+
+    class Meta:
+        verbose_name_plural = 'Allow Reviews'
